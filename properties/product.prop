@@ -1,3 +1,9 @@
+# App launch prefetching (IORapd)
+ro.iorapd.enable=false
+iorapd.perfetto.enable=false
+iorapd.readahead.enable=false
+persist.device_config.runtime_native_boot.iorap_readahead_enable=false
+
 # Audio
 aaudio.hw_burst_min_usec=2000
 aaudio.mmap_exclusive_policy=2
@@ -32,3 +38,4 @@ bluetooth.profile.sap.server.enabled?=true
 
 # Thermal
 persist.vendor.thermal.config=/vendor/etc/thermal-engine.conf
+
