@@ -138,6 +138,7 @@ ro.incremental.enable=yes
 
 # Media
 debug.stagefright.c2inputsurface=-1
+debug.sdm.support_writeback=0
 
 # OEM Unlock
 ro.oem_unlock_supported=1
