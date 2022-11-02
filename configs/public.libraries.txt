@@ -4,4 +4,19 @@ libsdsprpc.so
 libfastcvopt.so
 liblistensoundmodel2.so
 libOpenCL.so
-libcamxextension_night.so
+libcamxextension_night.so 64
+libarcsoft_beautyshot.so 64
+libarcsoft_aiscenedetection.so 64
+libarcsoft_portrait_distortion_correction.so 64
+libarcsoft_low_light_hdr.so 64
+libmouth_mask_detection.arcsoft.so 64
+libarcsoft_superportrait.so 64
+libarcsoft_watermark.so 64
+libarcsoft_portrait_super_night_raw.so 64
+libarcsoft_super_night_raw.so 64
+libarcsoft_dark_vision_raw.so 64
+libarcsoft_singlecam_bokeh.so 64
+libarcsoft_high_dynamic_range.so 64
+libarcsoft_dualcam_refocus_image.so 64
+libarcsoft_dualcam_refocus_video.so 64
+libarcsoft_mf_superresolution.so 64

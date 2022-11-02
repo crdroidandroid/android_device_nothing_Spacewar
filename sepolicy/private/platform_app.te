@@ -1,2 +1,4 @@
 # Let se.dirac.acs read Dirac properties.
 get_prop(platform_app, vendor_nothing_newdirac_prop)
+
+get_prop(platform_app, audio_config_prop)
