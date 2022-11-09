@@ -96,6 +96,11 @@ on fs
     chown system system /sys/class/qcom-haptics/lra_frequency_hz
     chown system system /sys/class/qcom-haptics/lra_impedance
 
+on post-fs
+    # Workarround for cache
+    rm /data/resource-cache
+    rm /data/system/package_cache
+
 on post-fs-data
     mkdir /data/vendor/goodix 0700 system system
 
