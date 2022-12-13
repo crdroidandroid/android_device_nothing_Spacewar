@@ -288,6 +288,10 @@ PRODUCT_PACKAGES += \
 # Nt-fwk
 $(call inherit-product, hardware/nothing/nt-fwk/nt-fwk.mk)
 
+# IRQ balance config
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
+
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.lineage-libperfmgr \
