@@ -47,6 +47,7 @@ ro.nfc.port=I2C
 # Radio
 ril.subscription.types=NV,RUIM
 telephony.lteOnCdmaDevice=1
+persist.rcs.supported=1
 
 # RmNet
 persist.rmnet.data.enable=true
