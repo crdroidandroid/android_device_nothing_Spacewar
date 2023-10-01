@@ -453,3 +453,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# Blur
+TARGET_ENABLE_BLUR := true
+
