@@ -1,0 +1,15 @@
+[
+  {
+    "repository": "crdroidandroid/android_kernel_nothing_sm7325",
+    "target_path": "kernel/nothing/sm7325"
+  },
+  {
+    "repository": "crdroidandroid/android_hardware_nothing",
+    "target_path": "hardware/nothing"
+  },
+  {
+    "repository": "crdroidandroid/proprietary_vendor_nothing_Spacewar",
+    "target_path": "vendor/nothing/Spacewar",
+    "remote": "crdroid-gitlab"
+  }
+]
