@@ -5,7 +5,7 @@
         <boolean name="carrier_vowifi_enabled_bool" value="true"/>
         <boolean name="editable_wfc_mode_bool" value="true"/>
         <boolean name="require_entitlement_checks_bool" value="false"/>
-
+        <boolean name="hide_lte_plus_data_icon_bool" value="false"/>
         <boolean name="carrier_volte_available_bool" value="true"/>
         <boolean name="carrier_volte_enabled_bool" value="true"/>
     </carrier_config>
