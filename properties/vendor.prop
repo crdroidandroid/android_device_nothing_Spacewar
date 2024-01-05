@@ -1,3 +1,6 @@
+# APK Verity
+ro.apk_verity.mode=2
+
 # Audio
 persist.vendor.audio.ambisonic.auto.profile=false
 persist.vendor.audio.ambisonic.capture=false
