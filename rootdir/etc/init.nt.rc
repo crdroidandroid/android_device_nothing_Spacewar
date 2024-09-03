@@ -7,3 +7,8 @@ on post-fs-data
     copy /mnt/vendor/persist/camera/ois_caldata_wide_persist.bin /data/vendor/camera/ois_caldata_wide_persist.bin
     chmod 0444 /data/vendor/camera/ois_caldata_wide_persist.bin
     chown cameraserver audio /data/vendor/camera/ois_caldata_wide_persist.bin
+
+on property:sys.boot_completed=1
+    # OTG
+    chown system system /proc/charger/nt_otg_enable
+    write /proc/charger/nt_otg_enable 4
