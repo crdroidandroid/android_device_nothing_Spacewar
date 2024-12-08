@@ -4,6 +4,15 @@ use.voice.path.for.pcm.voip=true
 # Audio Volume Steps
 ro.config.media_vol_steps=20
 
+# Battery Saving
+persist.radio.add_power_save=1
+pm.sleep_mode=1
+ro.ril.disable.power.collapse=0
+ro.ril.fast.dormancy.rule=1
+ro.ril.fast.dormancy.timeout=3
+ro.mot.eri.losalert.delay=100
+ro.vold.umsdirtyratio=20
+
 # Bluetooth
 persist.vendor.bluetooth.modem_nv_support=true
 
