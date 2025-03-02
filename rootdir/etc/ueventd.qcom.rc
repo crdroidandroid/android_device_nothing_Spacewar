@@ -478,3 +478,9 @@ firmware_directories /vendor/firmware_mnt/image/ /mnt/vendor/persist/
 
 # Battery
 /sys/class/qcom-battery                                 charging_enabled                0660    system  system
+
+# Torch control
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_0 brightness 0660 cameraserver camera
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:torch_1 brightness 0660 cameraserver camera
+/sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8350c@2:qcom,flash_led@ee00/leds/led:switch_2 0660 cameraserver camera
+
