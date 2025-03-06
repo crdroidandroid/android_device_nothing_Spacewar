@@ -54,6 +54,9 @@
         <!--DOLBY VQE-->
         <library name="vqe" path="libswvqe.so"/>
         <!--DOLBY END-->
+        <!--Spatial Audio-->
+        <library name="spatializer" path="libspatialaudio.so"/>
+	<!--Spatial Audio-->
     </libraries>
     <effects>
         <effectProxy name="bassboost" library="proxy" uuid="14804144-a5ee-4d24-aa88-0002a5d5c51b">
@@ -107,11 +110,11 @@
         <effect name="dirac_controller" library="dirac_gef" uuid="128B9BA2-D0C9-47C6-AFF3-9F761CD0E228"/>
         <!-- add for dirac support -->
     </effects>
-    <postprocess>
         <stream type="voice_call">
             <apply effect="voice_helper"/>
         </stream>
 
+    <effects>
         <!--DOLBY DAP-->
         <effect name="dap" library="dap" uuid="9d4921da-8225-4f29-aefa-39537a04bcaa"/>
         <effect name="dlb_music_listener" library="dvl" uuid="40f66c8b-5aa5-4345-8919-53ec431aaa98"/>
@@ -127,6 +130,9 @@
         <!--DOLBY VQE-->
         <effect name="vqe" library="vqe" uuid="64a0f614-7fa4-48b8-b081-d59dc954616f"/>
         <!--DOLBY END-->
+        <!--Spatial Audio-->
+        <effect name="spatializer" library="spatializer" uuid="cc4677de-ff72-11eb-9a03-0242ac130003"/>
+	<!--Spatial Audio-->
     </effects>
     <preprocess>
         <stream type="voice_communication">
