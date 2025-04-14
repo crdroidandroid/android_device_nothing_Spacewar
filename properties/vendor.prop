@@ -79,6 +79,9 @@ persist.vendor.qcom.bluetooth.aac_vbr_ctl.enabled=true
 persist.vendor.qcom.bluetooth.aptxadaptiver2_1_support=true
 ro.bluetooth.a2dp_offload.supported=true
 
+# Camera
+vendor.camera.aux.packagelist=com.snapchat.android
+
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key
