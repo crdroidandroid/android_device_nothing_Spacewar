@@ -196,6 +196,9 @@ vendor.netflix.bsp_rev=Q6450-36256-1
 # OEM Unlock
 ro.oem_unlock_supported=1
 
+# Perf
+vendor.perf.framepacing.enable=1
+
 # Performance
 debug.performance.tuning=1
 
