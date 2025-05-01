@@ -83,6 +83,13 @@ ro.bluetooth.a2dp_offload.supported=true
 ro.crypto.dm_default_key.options_format.version=2
 ro.crypto.volume.metadata.method=dm-default-key
 
+# Dex2oat
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.dex2oat-cpu-set=4,5,6,7
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-cpu-set=4,5,6,7
+dalvik.vm.image-dex2oat-threads=4
+
 # Display
 vendor.display.comp_mask=0
 vendor.display.disable_excl_rect=0
