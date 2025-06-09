@@ -250,7 +250,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.power.silence.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.power.silence.rc
+    $(LOCAL_PATH)/rootdir/etc/init.power.silence.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.power.silence.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.nt.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nt.rc
 
 # IPACM
 PRODUCT_PACKAGES += \
