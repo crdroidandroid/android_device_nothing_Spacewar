@@ -203,6 +203,7 @@ debug.renderengine.graphite=true
 debug.renderengine.backend=skiaglthreaded
 debug.stagefright.renderengine.backend=threaded
 renderthread.skia.reduceopstasksplitting=true
+debug.hwui.skia_atrace_enabled=false
 
 # Incremental FS
 ro.incremental.enable=yes
