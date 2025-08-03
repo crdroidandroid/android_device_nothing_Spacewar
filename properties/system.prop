@@ -21,6 +21,7 @@ ro.sf.blurs_are_expensive=1
 
 # Camera
 camera.disable_zsl_mode=true
+ro.com.google.lens.oem_camera_package=com.nothing.camera
 
 # CNE
 persist.vendor.cne.feature=1
