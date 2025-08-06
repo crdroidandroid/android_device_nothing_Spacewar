@@ -98,14 +98,20 @@ vendor/lib/hw/com.dsi.ant@1.0-impl.so
 vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
 # Audio
-vendor/lib/soundfx/libdiraceffect_NT.so
 vendor/lib/lib_lvacfs.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
-vendor/lib/libdirac.so
 vendor/lib/liblvacfs_wrapper.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
+
+# Dirac
+system/etc/sysconfig/preinstalled-packages-audioeffect.xml
+system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
+vendor/etc/dirac/dirac_resource.dar
+vendor/etc/dirac/interface.json
+vendor/lib/libdirac.so
+vendor/lib/soundfx/libdiraceffect_NT.so
 
 # Audio amplifier
 vendor/firmware/tfa98xx.cnt
