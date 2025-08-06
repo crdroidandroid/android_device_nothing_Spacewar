@@ -1,3 +1,10 @@
+# Audio (Dirac)
+persist.vendor.newdirac.volume.value                    u:object_r:vendor_nothing_newdirac_prop:s0
+persist.vendor.newdirac.dump                            u:object_r:vendor_nothing_newdirac_prop:s0
+persist.vendor.newdirac.enable.value                    u:object_r:vendor_nothing_newdirac_prop:s0
+persist.vendor.newdirac.cur.config                      u:object_r:vendor_nothing_newdirac_prop:s0
+ro.vendor.dirac						u:object_r:vendor_nothing_newdirac_prop:s0
+
 # Camera
 ro.camera.req.fmq.                          u:object_r:exported_default_prop:s0
 ro.camera.res.fmq.                          u:object_r:exported_default_prop:s0

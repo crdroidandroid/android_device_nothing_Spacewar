@@ -1,0 +1,2 @@
+# Let se.dirac.acs read Dirac properties.
+get_prop(platform_app, vendor_nothing_newdirac_prop)

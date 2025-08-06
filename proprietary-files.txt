@@ -116,6 +116,14 @@ vendor/lib/libqtigef.so
 vendor/lib/libssrec.so
 vendor/lib/libsurround_3mic_proc.so
 
+# Dirac
+system/etc/sysconfig/preinstalled-packages-audioeffect.xml
+system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
+vendor/etc/dirac/dirac_resource.dar
+vendor/etc/dirac/interface.json
+vendor/lib/libdirac.so
+vendor/lib/soundfx/libdiraceffect_NT.so
+
 # Audio amplifier
 vendor/firmware/tfa98xx.cnt
 
