@@ -521,12 +521,6 @@
         <item>30</item>
     </integer-array>
 
-    <!-- Vibrator pattern for feedback when selecting a day/month/year date of a Calendar -->
-    <integer-array name="config_calendarDateVibePattern">
-        <item>125</item>
-        <item>30</item>
-    </integer-array>
-
     <!-- Vibrator pattern for feedback about booting with safe mode enabled -->
     <integer-array name="config_safeModeEnabledVibePattern">
         <item>1</item>
@@ -534,13 +528,6 @@
         <item>21</item>
         <item>500</item>
         <item>600</item>
-    </integer-array>
-
-    <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
-    <integer-array name="config_scrollBarrierVibePattern">
-        <item>15</item>
-        <item>10</item>
-        <item>10</item>
     </integer-array>
 
     <!-- The default intensity level for haptic feedback. See
