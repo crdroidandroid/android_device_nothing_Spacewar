@@ -1,1 +1,1 @@
-libencoderjpeg_jni.so nopreload
+libencoderjpeg_jni.so 64
