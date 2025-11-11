@@ -195,6 +195,9 @@ vendor.netflix.bsp_rev=Q6450-36256-1
 # OEM Unlock
 ro.oem_unlock_supported=1
 
+# Performance
+debug.performance.tuning=1
+
 # QTEE
 persist.vendor.qteeconnector.retrying_interval=30
 persist.vendor.qteeconnector.retrying_timeout=2000
