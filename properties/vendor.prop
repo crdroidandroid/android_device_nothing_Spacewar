@@ -185,12 +185,12 @@ ro.hwui.texture_cache_flushrate=0.4
 ro.hwui.texture_cache_size=72
 debug.hwui.use_hint_manager=true
 debug.hwui.target_cpu_time_percent=30
-debug.hwui.renderer=skiavk
+debug.hwui.renderer=skiagl
 debug.hwui.show_overdraw=false
 debug.hwui.use_triple_buffering=true
-debug.renderengine.vulkan=true
+debug.renderengine.vulkan=false
 debug.renderengine.graphite=true
-debug.renderengine.backend=skiavkthreaded
+debug.renderengine.backend=skiaglthreaded
 debug.stagefright.renderengine.backend=threaded
 renderthread.skia.reduceopstasksplitting=true
 
