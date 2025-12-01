@@ -31,4 +31,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 BUILD_FINGERPRINT := Nothing/Spacewar/Spacewar:12/SKQ1.211230.001/1666412462:user/release-keys
 
+# Blur
 TARGET_ENABLE_BLUR := true
+
+# Boot Animation
+TARGET_BOOT_ANIMATION_RES := 1080
