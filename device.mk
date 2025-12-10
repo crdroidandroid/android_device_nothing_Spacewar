@@ -215,7 +215,7 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.mapperextensions@1.1.vendor
 
 # Dolby
-$(call inherit-product, hardware/dolby/dolby.mk)
+$(call inherit-product, hardware/nothing/dolby/dolby.mk)
 
 # DRM
 PRODUCT_PACKAGES += \
