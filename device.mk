@@ -191,7 +191,6 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 $(call soong_config_set,libcameraservice,ext_lib,//$(LOCAL_PATH):libcameraservice_extension.Spacewar)
-$(call inherit-product, packages/apps/agc/config.mk)
 
 # Display
 PRODUCT_PACKAGES += \
