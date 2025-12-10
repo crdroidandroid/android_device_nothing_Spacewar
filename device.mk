@@ -189,7 +189,6 @@ PRODUCT_PACKAGES += \
 
 $(call soong_config_set,camera,override_format_from_reserved,true)
 $(call soong_config_set,libcameraservice,ext_lib,//$(LOCAL_PATH):libcameraservice_extension.Spacewar)
-$(call inherit-product, packages/apps/agc/config.mk)
 
 # Display
 PRODUCT_PACKAGES += \
