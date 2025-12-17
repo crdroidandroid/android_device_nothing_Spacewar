@@ -1,0 +1,16 @@
+on early-init
+    stop vendor.perfd
+    stop vendor.perfd-1-0
+    stop vendor.perfd-2-0
+    stop vendor.qti.perfd
+    setprop vendor.perf.disable 1
+    setprop vendor.powerhal.disable.perfd true
+
+on boot
+    stop vendor.perfd
+    stop vendor.perfd-1-0
+    stop vendor.perfd-2-0
+    stop vendor.qti.perfd
+
+on property:vendor.camera.running=1
+    setprop vendor.powerhal.camera.boost false
