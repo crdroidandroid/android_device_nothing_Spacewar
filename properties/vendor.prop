@@ -89,6 +89,8 @@ ro.bluetooth.powerstats.disable=true
 
 # Camera
 vendor.camera.aux.packagelist=com.snapchat.android
+persist.vendor.camera.eis.enable=1
+persist.vendor.camera.is_type=4
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
