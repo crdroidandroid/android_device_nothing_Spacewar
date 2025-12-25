@@ -5,6 +5,12 @@ on early-init
     stop vendor.qti.perfd
     setprop vendor.perf.disable 1
     setprop vendor.powerhal.disable.perfd true
+    setprop log.tag.QTI.PowerHAL S
+    setprop log.tag.PowerHAL S
+    setprop log.tag.QTI.Power S
+    setprop log.tag.android.hardware.power S
+    setprop persist.vendor.log.tag.power S
+    setprop persist.vendor.log.tag.qti_power S
 
 on boot
     stop vendor.perfd
