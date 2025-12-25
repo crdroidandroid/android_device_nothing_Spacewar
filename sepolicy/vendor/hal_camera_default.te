@@ -1,5 +1,7 @@
 typeattribute hal_camera_default vendor_hal_qspmhal_client;
 
 allow hal_camera_default vendor_xdsp_device:chr_file r_file_perms;
+allow hal_camera_default camera_device:chr_file rw_file_perms;
+allow hal_camera_default vendor_camera_prop:file { read open getattr };
 
 binder_call(hal_camera_default, vendor_hal_qspmhal_default)
