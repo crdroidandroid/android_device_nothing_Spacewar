@@ -96,6 +96,10 @@ persist.vendor.camera.enableUBWC=0
 persist.camera.aux.packagelist=*
 persist.vendor.farf.enable=0
 persist.vendor.qdsp.log.disable=1
+persist.vendor.camera.mfnr.enable=0
+persist.vendor.camera.enableUBWC=0
+persist.vendor.camera.isp.debug=0
+persist.vendor.camera.llvd.enable=0
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
