@@ -254,20 +254,24 @@ persist.vendor.sensors.debug.hal=0
 persist.vendor.sensors.on_change_sample_period=true
 persist.vendor.sensors.sync_request=true
 
-# SPAMMY S Log Tags
+# Silence spammy logs
 persist.log.tag.QTIPowerHAL=S
-setprop persist.log.tag.ANDR-PERF-REQUEST S
-setprop persist.log.tag.ANDR-PERF-MPCTL S
-setprop persist.log.tag.QTI_PowerHAL S
-
-# SPAMMY E Log Tags
-persist.log.tag.statsd=E
-persist.log.tag.WifiVendorHal=E
-persist.log.tag.AudioPolicyConfig=E
-persist.log.tag.AudioPolicyService=E
-persist.log.tag.DisplayFeatureHal=E
-persist.log.tag.qti_sensors_hal=E
-persist.log.tag.BluetoothAdapterService=E
+persist.log.tag.QTI_PowerHAL=S
+persist.log.tag.QTI.PowerHAL=S
+persist.log.tag.ANDR-PERF-REQUEST=S
+persist.log.tag.ANDR-PERF-MPCTL=S
+persist.log.tag.QTI_PowerHAL=S
+persist.log.tag.statsd=S
+persist.log.tag.WifiVendorHal=S
+persist.log.tag.AudioPolicyConfig=S
+persist.log.tag.AudioPolicyService=S
+persist.log.tag.DisplayFeatureHal=S
+persist.log.tag.qti_sensors_hal=S
+persist.log.tag.BluetoothAdapterService=S
+persist.vendor.wifi.log_level=0
+persist.vendor.wifi.debug=0
+persist.vendor.cnss.log_level=0
+persist.vendor.qcom.wlan.debug=0
 
 # SoC
 ro.soc.manufacturer=QTI
