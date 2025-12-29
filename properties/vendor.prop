@@ -92,6 +92,7 @@ persist.vendor.camera.eis.enable=1
 persist.vendor.camera.is_type=4
 persist.vendor.camera.aux.packagelist=*
 persist.vendor.camera.mfnr.enable=0
+persist.vendor.camera.enableUBWC=0
 persist.camera.aux.packagelist=*
 
 # Crypto
