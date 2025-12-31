@@ -14,6 +14,7 @@
         <boolean name="vilte_data_is_metered_bool" value="false" />
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true" />
         <boolean name="carrier_volte_available_bool" value="true" />
+        <boolean name="carrier_vowifi_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="config_hide_vt_callforward_option" value="true" />
