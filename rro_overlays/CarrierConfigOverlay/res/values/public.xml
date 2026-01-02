@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources package="com.android.carrierconfig.overlay.common" id="0x7f">
+  <public id="0x7f010000" type="xml" name="vendor" />
+</resources>
