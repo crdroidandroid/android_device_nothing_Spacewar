@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<carrier_config_list xmlns:android="http://schemas.android.com/apk/res/android">
+    <carrier_config>
+        <boolean name="carrier_vowifi_available_bool" value="true"/>
+        <boolean name="carrier_vowifi_enabled_bool" value="true"/>
+        <boolean name="editable_wfc_mode_bool" value="true"/>
+        <boolean name="require_entitlement_checks_bool" value="false"/>
+
+        <boolean name="carrier_volte_available_bool" value="true"/>
+        <boolean name="carrier_volte_enabled_bool" value="true"/>
+    </carrier_config>
+</carrier_config_list>
