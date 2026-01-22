@@ -51,7 +51,6 @@ persist.radio.data_ltd_sys_ind=1
 persist.radio.data_con_rprt=1
 persist.radio.rat_on=combine
 persist.radio.VT_HYBRID_ENABLE=1
-persist.sys.phh.ims.caf=true
 persist.sys.strictmode.disable=true
 persist.vendor.ims.enabled=1
 persist.vendor.ims.enable_ims=1
