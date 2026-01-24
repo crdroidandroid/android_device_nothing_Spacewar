@@ -8,3 +8,5 @@ type sysfs_torch, sysfs_type, fs_type;
 allow cameraserver camera_device:chr_file rw_file_perms;
 allow cameraserver vendor_camera_prop:file { read open getattr };
 allow hal_camera_default vendor_file:file { read open getattr };
+
+type sysfs_kgsl_gpuclk, sysfs_type, fs_type;

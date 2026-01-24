@@ -11,6 +11,11 @@ genfscon sysfs /devices/platform/soc/aa00000.qcom,vidc/sku_version              
 genfscon sysfs /devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/fts_gesture_fod_pressed          u:object_r:vendor_sysfs_sensors:s0
 genfscon sysfs /devices/platform/soc/a94000.spi/spi_master/spi0/spi0.0/fts_gesture_single_tap_pressed   u:object_r:vendor_sysfs_sensors:s0
 
+# GPU Thermal Control
+genfscon sysfs /devices/platform/soc/3d00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk    u:object_r:sysfs_kgsl_gpuclk:s0
+genfscon sysfs /class/kgsl/kgsl-3d0/max_gpuclk                                          u:object_r:sysfs_kgsl_gpuclk:s0
+genfscon sysfs /class/kgsl/kgsl-3d0/devfreq/cur_freq                                    u:object_r:sysfs_kgsl_gpuclk:s0
+
 # OTG Switch
 genfscon proc /charger/nt_otg_enable																																							u:object_r:proc_otg_switch:s0
 

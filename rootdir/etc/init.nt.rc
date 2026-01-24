@@ -8,6 +8,11 @@ on post-fs-data
     chmod 0444 /data/vendor/camera/ois_caldata_wide_persist.bin
     chown cameraserver audio /data/vendor/camera/ois_caldata_wide_persist.bin
 
+    chown system system /sys/class/kgsl/kgsl-3d0/max_gpuclk
+    chmod 0660 /sys/class/kgsl/kgsl-3d0/max_gpuclk
+    chown system system /sys/class/kgsl/kgsl-3d0/devfreq/cur_freq
+    chmod 0440 /sys/class/kgsl/kgsl-3d0/devfreq/cur_freq
+
 on property:sys.boot_completed=1
     # OTG
     chown system system /proc/charger/nt_otg_enable
