@@ -591,4 +591,8 @@
     <!-- Whether WM DisplayContent supports high performance transitions
          (lower-end devices may want to disable) -->
     <bool name="config_deviceSupportsHighPerfTransitions">true</bool>
+
+    <!-- Support wifi calling -->
+    <bool name="config_support_wifi_calling">true</bool>
+    <bool name="config_support_wifi_calling_roaming">true</bool>
 </resources>
