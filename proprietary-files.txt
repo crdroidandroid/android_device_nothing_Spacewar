@@ -110,7 +110,6 @@ system/etc/sysconfig/preinstalled-packages-audioeffect.xml
 system/priv-app/NothingAudioEffectService/NothingAudioEffectService.apk
 vendor/etc/dirac/dirac_resource.dar
 vendor/etc/dirac/interface.json
-vendor/lib/soundfx/libdiraceffect_NT.so
 vendor/lib/libdirac.so
 
 # Audio amplifier
