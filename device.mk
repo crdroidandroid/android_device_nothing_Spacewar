@@ -226,6 +226,9 @@ PRODUCT_PACKAGES += \
 # Dolby
 $(call inherit-product, hardware/nothing/dolby/dolby.mk)
 
+PRODUCT_PACKAGES += \
+    LunarisDolby
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
