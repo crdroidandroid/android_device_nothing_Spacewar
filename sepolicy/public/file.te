@@ -1,2 +1,2 @@
 # OTG Switch
-type proc_otg_switch, file_type;
+type proc_otg_switch, proc_type;
