@@ -1,6 +1,5 @@
 com.qti.chi.override.so 64
 camera.qcom.so 64
-libqti-perfd-client.so
 libadsprpc.so
 libcdsprpc.so
 libsdsprpc.so
