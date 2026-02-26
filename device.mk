@@ -476,3 +476,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
+
+# Stock Ringtones
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/nothing/Spacewar/proprietary/vendor/product/media/audio,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
