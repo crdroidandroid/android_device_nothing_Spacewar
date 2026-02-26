@@ -420,3 +420,7 @@ PRODUCT_PACKAGES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libwfdaac_vendor
+
+# Stock Ringtones
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/nothing/Spacewar/proprietary/vendor/product/media/audio,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
