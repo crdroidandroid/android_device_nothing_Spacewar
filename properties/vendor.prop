@@ -200,9 +200,6 @@ debug.stagefright.ccodec=4
 debug.stagefright.omx_default_rank=0
 debug.sdm.support_writeback=0
 
-# Netflix
-vendor.netflix.bsp_rev=Q6450-36256-1
-
 # OEM Unlock
 ro.oem_unlock_supported=1
 
