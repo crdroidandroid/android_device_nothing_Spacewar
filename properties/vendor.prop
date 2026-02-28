@@ -212,6 +212,8 @@ ro.incremental.enable=yes
 debug.stagefright.c2inputsurface=-1
 debug.sdm.support_writeback=0
 
+# Netflix
+ro.netflix.bsp_rev=Q7325-SPY-33758-1
 # OEM Unlock
 ro.oem_unlock_supported=1
 
