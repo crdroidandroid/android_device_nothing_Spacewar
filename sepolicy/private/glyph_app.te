@@ -24,6 +24,7 @@ allow glyph_app {
   voiceinteraction_service
   uimode_service
   sensitive_content_protection_service
+  thermal_service
   protolog_configuration_service
 }:service_manager find;
 
