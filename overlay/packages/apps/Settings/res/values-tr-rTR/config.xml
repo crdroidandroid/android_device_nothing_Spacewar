@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="config_color_mode_options_strings">
+        <item>Canlı</item>
+        <item>Doğal</item>
+        <item>Geliştirilmiş</item>
+        <item>Doygun</item>
+    </string-array>
+</resources>
