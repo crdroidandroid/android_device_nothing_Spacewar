@@ -69,6 +69,22 @@ static bool readFpState(int fd, int& screenX, int& screenY) {
     return state > 0;
 }
 
+// Drains any pending sysfs poll events so stale interrupts are not
+// delivered when a sensor is re-enabled (e.g. ghost wake from a queued
+// second tap after the first tap already unlocked the screen).
+static void drainPollFd(int fd) {
+    struct pollfd pfd = {
+            .fd = fd,
+            .events = POLLERR | POLLPRI,
+    };
+    // Non-blocking check: if an event is already pending, read it away.
+    while (poll(&pfd, 1, 0) > 0 && (pfd.revents & (POLLERR | POLLPRI))) {
+        char buf[512];
+        lseek(fd, 0, SEEK_SET);
+        read(fd, buf, sizeof(buf));
+    }
+}
+
 }  // anonymous namespace
 
 namespace android {
@@ -311,6 +327,10 @@ void UdfpsSensor::run() {
                 return ((mIsEnabled && mMode == OperationMode::NORMAL) || mStopThread);
             });
         } else {
+            // Drain any stale events that may have accumulated while the sensor
+            // was disabled (same ghost-wake protection as SingleTapSensor).
+            drainPollFd(mPollFd);
+
             // Cannot hold lock while polling.
             runLock.unlock();
             int rc = poll(mPolls, 2, -1);
@@ -422,6 +442,12 @@ void SingleTapSensor::run() {
                 return ((mIsEnabled && mMode == OperationMode::NORMAL) || mStopThread);
             });
         } else {
+            // Drain any stale events that may have accumulated while the sensor
+            // was disabled (e.g. a second tap queued right after the first one
+            // unlocked the screen). Without this, the pending kernel interrupt
+            // would immediately fire on the next poll() call and wake the screen.
+            drainPollFd(mPollFd);
+
             // Cannot hold lock while polling.
             runLock.unlock();
             int rc = poll(mPolls, 2, -1);
