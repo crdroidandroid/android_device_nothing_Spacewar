@@ -28,6 +28,8 @@ allow glyph_app {
   protolog_configuration_service
 }:service_manager find;
 
+dontaudit glyph_app default_prop:file { read open getattr map };
+
 allow glyph_app system_app_data_file:dir create_dir_perms;
 allow glyph_app system_app_data_file:{
   file
