@@ -199,7 +199,6 @@ debug.hwui.renderer=skiagl
 debug.hwui.show_overdraw=false
 debug.hwui.use_triple_buffering=true
 debug.renderengine.vulkan=false
-debug.renderengine.graphite=true
 debug.renderengine.backend=skiaglthreaded
 debug.stagefright.renderengine.backend=threaded
 renderthread.skia.reduceopstasksplitting=true
