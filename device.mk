@@ -221,6 +221,8 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.display.composer-service \
     vendor.qti.hardware.memtrack-service
 
+$(call soong_config_set,surfaceflinger,frame_rate_category_min,120)
+
 # Dolby
 $(call inherit-product, hardware/nothing/dolby/dolby.mk)
 
