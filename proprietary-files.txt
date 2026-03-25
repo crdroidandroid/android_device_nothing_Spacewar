@@ -1,4 +1,4 @@
-# All unpinned blobs are extracted from Spacewar-U3.0-250303-1817
+# All unpinned blobs are extracted from Spacewar_V3.2-260206-1016
 
 # ACDB
 vendor/etc/acdbdata/QRD/lahaina-yupikqrd-snd-card/QRD_Yupik_Bluetooth_cal.acdb
