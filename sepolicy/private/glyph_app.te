@@ -24,6 +24,7 @@ allow glyph_app {
   voiceinteraction_service
   uimode_service
   sensitive_content_protection_service
+  protolog_configuration_service
 }:service_manager find;
 
 allow glyph_app system_app_data_file:dir create_dir_perms;
