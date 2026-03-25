@@ -1,6 +1,5 @@
-
-# Copyright (C) 2022-2025 The LineageOS Project	
-# 
+# Copyright (C) 2022-2025 The LineageOS Project
+#
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -163,7 +162,7 @@ TARGET_USERIMAGES_USE_F2FS := true
 ENABLE_VENDOR_RIL_SERVICE := true
 
 # Security patch level
-VENDOR_SECURITY_PATCH := 2025-03-03
+VENDOR_SECURITY_PATCH := 2026-03-01
 
 # SELinux
 include device/qcom/sepolicy_vndr/SEPolicy.mk
