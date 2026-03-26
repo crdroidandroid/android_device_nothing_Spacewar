@@ -14,5 +14,9 @@
   {
     "repository": "crdroidandroid/vendor_nothing_camera-Spacewar",
     "target_path": "vendor/nothing/camera"
+  },
+  {
+    "repository": "crdroidandroid/android_vendor_bcr",
+    "target_path": "vendor/bcr"
   }
 ]
