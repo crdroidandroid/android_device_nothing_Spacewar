@@ -228,3 +228,27 @@ mode: 0771
 user: AID_MEDIA
 group: AID_MEDIA
 caps: 0
+
+[vendor/lib/egl/*]
+mode: 0644
+user: AID_ROOT
+group: AID_SHELL
+caps: 0
+
+[vendor/lib64/egl/*]
+mode: 0644
+user: AID_ROOT
+group: AID_SHELL
+caps: 0
+
+[vendor/lib/hw/*]
+mode: 0644
+user: AID_ROOT
+group: AID_SHELL
+caps: 0
+
+[vendor/lib64/hw/*]
+mode: 0644
+user: AID_ROOT
+group: AID_SHELL
+caps: 0

@@ -61,6 +61,7 @@ BOARD_KERNEL_CMDLINE := \
     iptable_raw.raw_before_defrag=1 \
     ip6table_raw.raw_before_defrag=1
 
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -168,6 +169,8 @@ ENABLE_VENDOR_RIL_SERVICE := true
 VENDOR_SECURITY_PATCH := 2026-03-01
 
 # SELinux
+BOARD_SEPOLICY := permissive
+BOARD_SEPOLICY_ALLOW_PERMISSIVE := true
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
@@ -175,7 +178,7 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
 
 # SurfaceFlinger
-TARGET_USE_AOSP_SURFACEFLINGER := true
+TARGET_USE_AOSP_SURFACEFLINGER := false
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

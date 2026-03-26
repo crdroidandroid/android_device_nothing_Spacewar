@@ -30,6 +30,13 @@
 # Fingerprint
 /data/vendor/goodix(/.*)?   u:object_r:fingerprint_data_file:s0
 
+# Firmware
+/(vendor|system/vendor)/firmware/yupik_ipa_fws.*    u:object_r:vendor_firmware_file:s0
+
+# Gpu Driver
+/(vendor|system/vendor)/lib(64)?/egl/.*\.so        u:object_r:same_process_hal_file:s0
+/(vendor|system/vendor)/lib(64)?/hw/.*\.so         u:object_r:same_process_hal_file:s0
+
 # HALs
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nothing     u:object_r:hal_fingerprint_default_exec:s0
 
