@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<resources>
+    <color name="ic_launcher_background">@android:color/system_accent1_600</color>
+    <color name="ic_gamebar_launcher_background">#141B2D</color>
+    
+    <!-- Default colors for ColorPicker -->
+    <color name="gamebar_default_bg_color">#FF0D1117</color>
+    <color name="gamebar_default_title_color">#FF9FCEDE</color>
+    <color name="gamebar_default_value_color">#FFFFB347</color>
+</resources>

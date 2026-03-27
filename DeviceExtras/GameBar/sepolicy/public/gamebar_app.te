@@ -1,0 +1,2 @@
+type gamebar_app, domain;
+typeattribute gamebar_app mlstrustedsubject;

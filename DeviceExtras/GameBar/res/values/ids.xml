@@ -1,0 +1,12 @@
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-FileCopyrightText: 2017 Jared Rummler
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<resources>
+  <item name="gamebar_color_picker_view" type="id"/>
+  <item name="gamebar_color_panel_old" type="id"/>
+  <item name="gamebar_color_panel_new" type="id"/>
+  <item name="gamebar_preference_preview_color_panel" type="id"/>
+</resources>

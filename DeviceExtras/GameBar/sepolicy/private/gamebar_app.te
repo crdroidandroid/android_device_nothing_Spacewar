@@ -1,0 +1,38 @@
+app_domain(gamebar_app)
+binder_use(gamebar_app)
+
+allow gamebar_app {
+  activity_service
+  activity_task_service
+  app_api_service
+  batterystats_service
+  cameraserver_service
+  content_capture_service
+  device_state_service
+  drmserver_service
+  game_service
+  gpu_service
+  hint_service
+  media_session_service
+  mediaextractor_service
+  mediametrics_service
+  mediaserver_service
+  netstats_service
+  permission_checker_service
+  sensorservice_service
+  statusbar_service
+  thermal_service
+}:service_manager find;
+
+allow gamebar_app system_app_data_file:dir create_dir_perms;
+allow gamebar_app system_app_data_file:{ file lnk_file } create_file_perms;
+
+binder_call(gamebar_app, gpuservice)
+
+# Allow reading thermal sensor data
+r_dir_file(gamebar_app, sysfs_thermal)
+allow gamebar_app sysfs_thermal:file { read open };
+allow gamebar_app sysfs:file { read open };
+allow gamebar_app sysfs:file { read open getattr ioctl };
+allow gamebar_app proc_stat:file r_file_perms;
+allow gamebar_app system_server:binder { call transfer };

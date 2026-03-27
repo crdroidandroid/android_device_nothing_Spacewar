@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_show_launcher_icon"
+        android:title="@string/show_launcher_icon"
+        android:checkable="true"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/menu_user_guide"
+        android:title="@string/game_bar_user_guide"
+        android:showAsAction="never" />
+</menu>

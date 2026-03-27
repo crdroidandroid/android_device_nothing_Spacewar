@@ -1,0 +1,3 @@
+#GameBar
+user=system seinfo=platform isPrivApp=true name=com.android.gamebar domain=gamebar_app type=system_app_data_file levelFrom=all
+

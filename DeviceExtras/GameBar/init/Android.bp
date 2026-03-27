@@ -1,0 +1,11 @@
+//
+// Copyright (C) 2025 kenway214
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "init.gamebar.rc",
+    src: "init.gamebar.rc",
+    sub_dir: "init",
+    vendor: true,
+}

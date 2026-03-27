@@ -601,4 +601,13 @@
 
     <!-- Whether to show a alarm dialog when device's usb port is overheating. -->
     <integer name="config_showUsbPortAlarm">1</integer>
+
+    <!-- GPU temperature path -->
+    <string name="config_gpu_temp_path">/sys/class/kgsl/kgsl-3d0/temp</string>
+    
+    <!-- RAM temperature path -->
+    <string name="config_ram_temp_path">/sys/class/thermal/thermal_zone60/temp</string>
+    
+    <!-- Adjust dividers if needed (usually 1000 for millidegrees, 10 for decidegrees) -->
+    <integer name="config_cpu_temp_divider">1000</integer>
 </resources>

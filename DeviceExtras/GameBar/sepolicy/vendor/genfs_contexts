@@ -1,0 +1,2 @@
+# for battery nodes on GameBar
+genfscon sysfs /class/power_supply/battery/temp u:object_r:vendor_sysfs_battery_supply:s0

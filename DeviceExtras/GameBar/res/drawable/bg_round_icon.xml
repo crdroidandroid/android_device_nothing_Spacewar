@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#E0E0E0"/>
+    <corners android:radius="24dp"/>
+    <size android:width="48dp" android:height="48dp"/>
+    <padding android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp"/>
+</shape> 

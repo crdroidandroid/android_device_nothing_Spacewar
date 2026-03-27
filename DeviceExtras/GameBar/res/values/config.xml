@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- GameBar Device Paths Configuration -->
+    <!-- GPU Configuration -->
+    <string name="config_gpu_usage_path" translatable="false">/sys/class/kgsl/kgsl-3d0/gpu_busy_percentage</string>
+    <string name="config_gpu_clock_path" translatable="false">/sys/class/kgsl/kgsl-3d0/gpuclk</string>
+    <string name="config_gpu_temp_path" translatable="false">/sys/class/kgsl/kgsl-3d0/temp</string>
+    <integer name="config_gpu_temp_divider">1000</integer>
+    <integer name="config_gpu_clock_divider">1000000</integer>
+    
+    <!-- RAM Configuration -->
+    <string name="config_ram_freq_path" translatable="false">/sys/devices/system/cpu/bus_dcvs/DDR/cur_freq</string>
+    <string name="config_ram_temp_path" translatable="false">/sys/class/thermal/thermal_zone27/temp</string>
+    <integer name="config_ram_temp_divider">1000</integer>
+    
+    <!-- Proc filesystem paths -->
+    <string name="config_proc_stat_path" translatable="false">/proc/stat</string>
+    <string name="config_proc_meminfo_path" translatable="false">/proc/meminfo</string>
+
+</resources>

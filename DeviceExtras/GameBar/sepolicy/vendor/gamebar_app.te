@@ -1,0 +1,14 @@
+allow gamebar_app vendor_sysfs_graphics:dir search;
+allow gamebar_app vendor_sysfs_graphics:file rw_file_perms;
+allow gamebar_app vendor_sysfs_kgsl:dir search;
+allow gamebar_app vendor_sysfs_kgsl:{ file lnk_file } rw_file_perms;
+allow gamebar_app vendor_sysfs_battery_supply:dir search;
+allow gamebar_app vendor_sysfs_battery_supply:file r_file_perms;
+allow gamebar_app vendor_sysfs_usb_supply:dir search;
+allow gamebar_app vendor_sysfs_usb_supply:file r_file_perms;
+allow gamebar_app proc_stat:file { read open getattr };
+allow gamebar_app vendor_sysfs_kgsl_gpuclk:file { read open getattr };
+
+allow zygote gamebar_app:process dyntransition;
+
+allow gamebar_app hal_graphics_mapper_hwservice:hwservice_manager find;

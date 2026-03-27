@@ -1,0 +1,2 @@
+# Process and system statistics files
+/proc/stat                                   u:object_r:proc_stat:s0

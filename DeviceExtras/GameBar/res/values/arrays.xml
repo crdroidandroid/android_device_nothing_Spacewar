@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- FPS Overlay -->
+    <string-array name="game_bar_fps_method_entries">
+        <item>New API (Default)</item>
+        <item>Legacy Sysfs</item>
+    </string-array>
+    <string-array name="game_bar_fps_method_values">
+        <item>new</item>
+        <item>legacy</item>
+    </string-array>
+
+    <!-- FPS Display Mode -->
+    <string-array name="fps_display_mode_entries">
+        <item>Basic (Current FPS only)</item>
+        <item>Advanced (Current + 1% + 0.1% Low)</item>
+    </string-array>
+    <string-array name="fps_display_mode_values">
+        <item>basic</item>
+        <item>advanced</item>
+    </string-array>
+    
+    <!-- Update Interval -->
+    <string-array name="fps_overlay_update_interval_entries">
+        <item>Every 500ms</item>
+        <item>Every second</item>
+        <item>Every 2 seconds</item>
+        <item>Every 5 seconds</item>
+    </string-array>
+    <string-array name="fps_overlay_update_interval_values">
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>5000</item>
+    </string-array>
+
+    <!-- Position -->
+    <string-array name="fps_overlay_position_entries">
+        <item>Top Left</item>
+        <item>Top Center</item>
+        <item>Top Right</item>
+        <item>Bottom Left</item>
+        <item>Bottom Center</item>
+        <item>Bottom Right</item>
+        <item>Custom Draggable</item>
+    </string-array>
+    <string-array name="fps_overlay_position_values">
+        <item>top_left</item>
+        <item>top_center</item>
+        <item>top_right</item>
+        <item>bottom_left</item>
+        <item>bottom_center</item>
+        <item>bottom_right</item>
+        <item>draggable</item>
+    </string-array>
+
+    <!-- Overlay format -->
+    <string-array name="game_bar_format_entries">
+        <item>Full</item>
+        <item>Minimal</item>
+    </string-array>
+    <string-array name="game_bar_format_values">
+        <item>full</item>
+        <item>minimal</item>
+    </string-array>
+
+    <!-- Split Mode -->
+    <string-array name="game_bar_split_mode_entries">
+        <item>Side-by-Side</item>
+        <item>Stacked</item>
+    </string-array>
+    <string-array name="game_bar_split_mode_values">
+        <item>side_by_side</item>
+        <item>stacked</item>
+    </string-array>
+
+    <!-- Gesture Functions -->
+    <string-array name="gesture_function_entries">
+        <item>No Action</item>
+        <item>Toggle Full/Minimal Format</item>
+        <item>Start/Stop Log Capture</item>
+        <item>Open GameBar Settings</item>
+        <item>Take Screenshot</item>
+        <item>Start/Stop Screen Record</item>
+        <item>Load Preset (Quick)</item>
+    </string-array>
+    <string-array name="gesture_function_values">
+        <item>no_action</item>
+        <item>toggle_format</item>
+        <item>capture_logs</item>
+        <item>open_settings</item>
+        <item>take_screenshot</item>
+        <item>screen_record</item>
+        <item>load_preset</item>
+    </string-array>
+
+    <!-- Long press timeouts -->
+    <string-array name="game_bar_longpress_entries">
+        <item>0.5 seconds</item>
+        <item>1 second</item>
+        <item>2 seconds</item>
+        <item>3 seconds</item>
+    </string-array>
+    <string-array name="game_bar_longpress_values">
+        <item>500</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+    </string-array>
+
+    <!-- Color presets for GameBar -->
+    <integer-array name="fps_overlay_color_int_values">
+        <item>0xFFFFFFFF</item> <!-- White -->
+        <item>0xFFDC143C</item> <!-- Crimson -->
+        <item>0xFF4CAF50</item> <!-- Fruit Salad -->
+        <item>0xFF4169E1</item> <!-- Royal Blue -->
+        <item>0xFFFFBF00</item> <!-- Amber -->
+        <item>0xFF008080</item> <!-- Teal -->
+        <item>0xFF8A2BE2</item> <!-- Electric Violet -->
+        <item>0xFFFF1493</item> <!-- Magenta -->
+        <item>0xFFFFB347</item>
+        <item>0xFF9FCEDE</item>
+        <item>0xFF0D1117</item>
+    </integer-array>
+
+</resources>

@@ -1,0 +1,51 @@
+//
+// Copyright (C) 2025 kenway214
+// SPDX-License-Identifier: Apache-2.0
+//
+
+android_app {
+    name: "GameBar",
+    defaults: [
+        "SettingsLibDefaults",
+    ],
+
+    srcs: [
+        "src/**/*.kt",
+        "src/**/*.java",
+        "src/**/*.aidl"
+    ],
+
+    certificate: "platform",
+    resource_dirs: ["res"],
+    asset_dirs: ["assets"],
+    platform_apis: true,
+    system_ext_specific: true,
+    privileged: true,
+
+    static_libs: [
+        "androidx.activity_activity-compose",
+        "androidx.compose.animation_animation",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.material3_material3",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-text",
+        "androidx.compose.ui_ui-tooling-preview",
+        "androidx.lifecycle_lifecycle-runtime-compose",
+        "androidx.core_core",
+        "androidx.recyclerview_recyclerview",
+        "org.lineageos.settings.resources"
+    ],
+
+    required: [
+        "privapp_whitelist_com.android.gamebar.xml",
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_com.android.gamebar.xml",
+    src: "permissions/privapp_whitelist_com.android.gamebar.xml",
+    sub_dir: "permissions",
+    system_ext_specific: true,
+}

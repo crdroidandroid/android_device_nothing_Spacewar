@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<paths>
+    <!-- External storage directory for log files -->
+    <external-path name="external_files" path="." />
+    
+    <!-- External storage files directory -->
+    <external-files-path name="external_app_files" path="." />
+    
+    <!-- Cache directory -->
+    <external-cache-path name="external_cache" path="." />
+</paths>
