@@ -339,44 +339,110 @@
         {
             "PowerHint": "INTERACTION",
             "Node": "sysModuleMsmPerformanceParametersCpuMinFreq",
-            "Value": "0:300000 1:300000 2:300000 3:300000 4:691200 5:691200 6:691200 7:806400",
-            "Duration": 500
+            "Value": "0:1516800 1:1516800 2:1516800 3:1516800 4:1344000 5:1344000 6:1344000 7:1766400",
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "procSysKernelSchedBoost",
-            "Value": "2",
-            "Duration": 500
+            "Value": "3",
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "procSysKernelSchedBusyHysteresisEnableCpus",
             "Value": "240",
-            "Duration": 500
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "procSysKernelSchedBusyHystNs",
             "Value": "39",
-            "Duration": 500
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "sysDevicesSystemCpuCpu0CoreCtlMinCpus",
             "Value": "3",
-            "Duration": 500
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "procSysKernelSchedMinTaskUtilForColocation",
             "Value": "0",
-            "Duration": 500
+            "Duration": 1000
         },
         {
             "PowerHint": "INTERACTION",
             "Node": "procSysKernelSchedMinTaskUtilForBoost",
             "Value": "0",
-            "Duration": 500
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysDevicesSystemCpuCpu4CpufreqSchedutilHispeedFreq",
+            "Value": "1228800",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysDevicesSystemCpuCpu4CpufreqSchedutilHispeedLoad",
+            "Value": "85",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "procSysKernelSchedGroupDownmigrate",
+            "Value": "40",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "procSysKernelSchedGroupUpmigrate",
+            "Value": "45",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "procSysKernelSchedDownmigrate",
+            "Value": "25\t25",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "procSysKernelSchedUpmigrate",
+            "Value": "30\t30",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysClassDevfreqSocQcomCpuCpuLlccBwBwHwmonSampleMs",
+            "Value": "4",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysClassDevfreqSocQcomCpuCpuLlccBwBwHwmonIoPercent",
+            "Value": "100",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysClassDevfreqSocQcomCpuLlccDdrBwBwHwmonSampleMs",
+            "Value": "4",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysClassDevfreqSocQcomCpuLlccDdrBwBwHwmonIoPercent",
+            "Value": "80",
+            "Duration": 1000
+        },
+        {
+            "PowerHint": "INTERACTION",
+            "Node": "sysClassDevfreqSocQcomCpuLlccDdrBwMinFreq",
+            "Value": "762",
+            "Duration": 1000
         },
         {
             "PowerHint": "LAUNCH",
