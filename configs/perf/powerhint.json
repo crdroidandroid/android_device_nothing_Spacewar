@@ -204,56 +204,86 @@
     {
       "PowerHint": "INTERACTION",
       "Node": "UclampTAMin",
-      "Duration": 0,
-      "Value": "30"
+      "Duration": 800,
+      "Value": "50"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPULittleClusterMinFreq",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "1324800"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBigClusterMinFreq",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "1516800"
     },
     {
       "PowerHint": "INTERACTION",
+      "Node": "CPUBigPlusClusterMinFreq",
+      "Duration": 800,
+      "Value": "806400"
+    },
+    {
+      "PowerHint": "INTERACTION",
       "Node": "SchedBoost",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "2"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHystTriggerCount",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHystLength",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWHistMemory",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "0"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "CPUBWMinFreq",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "7110"
     },
     {
       "PowerHint": "INTERACTION",
       "Node": "LLCCBWMinFreq",
-      "Duration": 0,
+      "Duration": 800,
       "Value": "5931"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "GPUMinFreq",
+      "Duration": 800,
+      "Value": "1"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "GPUForceRailOn",
+      "Duration": 800,
+      "Value": "1"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "GPUForceClkOn",
+      "Duration": 800,
+      "Value": "1"
+    },
+    {
+      "PowerHint": "INTERACTION",
+      "Node": "GPUIdleTimer",
+      "Duration": 800,
+      "Value": "10000"
     },
     {
       "PowerHint": "LAUNCH",
