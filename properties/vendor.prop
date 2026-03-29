@@ -277,6 +277,8 @@ persist.vendor.wifi.log_level=0
 persist.vendor.wifi.debug=0
 persist.vendor.cnss.log_level=0
 persist.vendor.qcom.wlan.debug=0
+persist.log.tag.SurfaceControl=S
+persist.log.tag.BLASTBufferQueue=S
 
 # SoC
 ro.soc.manufacturer=QTI
