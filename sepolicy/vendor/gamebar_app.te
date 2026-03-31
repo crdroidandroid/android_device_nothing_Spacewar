@@ -1,0 +1,4 @@
+allow system_app proc_stat:file r_file_perms;
+allow system_app vendor_sysfs_kgsl:file r_file_perms;
+allow system_app vendor_sysfs_kgsl_gpuclk:file r_file_perms;
+allow system_app sysfs_devfreq:file r_file_perms;
