@@ -610,4 +610,7 @@
     
     <!-- Adjust dividers if needed (usually 1000 for millidegrees, 10 for decidegrees) -->
     <integer name="config_cpu_temp_divider">1000</integer>
+
+    <!-- Smart 5G -->
+    <bool name="config_supportSmart5G">true</bool>
 </resources>
