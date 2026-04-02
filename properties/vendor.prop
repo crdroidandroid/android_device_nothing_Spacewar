@@ -100,6 +100,10 @@ persist.vendor.camera.mfnr.enable=0
 persist.vendor.camera.enableUBWC=0
 persist.vendor.camera.isp.debug=0
 persist.vendor.camera.llvd.enable=0
+persist.vendor.camera.mfsr.enable=0
+persist.vendor.camera.ai_sharpness=0
+persist.vendor.camera.sharpness=0
+persist.vendor.camera.edge_enhancement=0
 
 # Crypto
 ro.crypto.dm_default_key.options_format.version=2
