@@ -93,10 +93,10 @@ TARGET_SCREEN_WIDTH := 1080
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 31
 
-# Paranoid Glyph
+# Glyph
 PRODUCT_PACKAGES += \
-    ParanoidGlyphPhone1 \
-    GlyphAdapter
+    GlyphAdapter \
+    GlyphManager
 
 # Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
