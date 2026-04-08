@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- GameBar Device Paths Configuration -->
+    <!--
+         HOW TO OVERRIDE PATHS:
+         - Set path to "dynamic" to use automatic sysfs detection script.
+         - To hardcode a specific node, replace "dynamic" with the absolute path
+           (e.g., /sys/class/thermal/thermal_zone15/temp)
+           
+         HOW TO OVERRIDE DIVIDERS:
+         - Set divider to 0 to automatically detect whether temperatures are
+           milli/deci/celsius based on output values.
+         - Set to a manual divisor (e.g., 1000) if dynamic detection fails.
+    -->
+
+    <!-- CPU Configuration -->
+    <string name="config_cpu_temp_path" translatable="false">dynamic</string>
+    <integer name="config_cpu_temp_divider">0</integer>
+
+    <!-- GPU Configuration -->
+    <string name="config_gpu_usage_path" translatable="false">/sys/class/kgsl/kgsl-3d0/gpu_busy_percentage</string>
+    <string name="config_gpu_clock_path" translatable="false">/sys/class/kgsl/kgsl-3d0/gpuclk</string>
+    <string name="config_gpu_temp_path" translatable="false">dynamic</string>
+    <integer name="config_gpu_temp_divider">0</integer>
+    <integer name="config_gpu_clock_divider">1000000</integer>
+    
+    <!-- RAM Configuration -->
+    <string name="config_ram_freq_path" translatable="false">/sys/devices/system/cpu/bus_dcvs/DDR/cur_freq</string>
+    <string name="config_ram_temp_path" translatable="false">dynamic</string>
+    <integer name="config_ram_temp_divider">0</integer>
+    
+    <!-- Proc filesystem paths -->
+    <string name="config_proc_stat_path" translatable="false">/proc/stat</string>
+    <string name="config_proc_meminfo_path" translatable="false">/proc/meminfo</string>
+
+</resources>

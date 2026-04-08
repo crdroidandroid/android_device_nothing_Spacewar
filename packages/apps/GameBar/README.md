@@ -1,0 +1,261 @@
+# GameBar - Real-time Performance Overlay for Android
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Platform](https://img.shields.io/badge/Platform-Android-3DDC84.svg?logo=android&logoColor=white)](https://www.android.com)
+[![API](https://img.shields.io/badge/API-33%2B-brightgreen.svg?logo=android)](https://android-arsenal.com/api?level=33)
+[![Kotlin](https://img.shields.io/badge/Kotlin-1.9+-7F52FF.svg?logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Java](https://img.shields.io/badge/Java-17+-ED8B00.svg?logo=java&logoColor=white)](https://www.java.com)
+[![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-Material3-4285F4.svg?logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
+
+GameBar is a comprehensive real-time performance monitoring overlay for Android devices. It provides detailed system metrics including FPS, CPU/GPU usage, temperatures, and memory statistics with a customizable floating overlay.
+
+## Features
+
+- **Real-time FPS Monitoring** - Track frame rates with multiple measurement methods
+- **CPU Metrics** - Usage percentage, per-core frequencies, and temperature
+- **GPU Metrics** - Usage, clock speed, and temperature
+- **Memory Stats** - Total System RAM usage, RAM frequency, and RAM temperature
+- **Per-App RAM Tracking** - Isolate and track direct application physical PSS memory footprints autonomously (No Root required)
+- **Battery Temperature** - Monitor device thermal status
+- **Customizable Overlay** - Adjustable position, size, colors, and transparency
+- **Modern Settings Hub** - Redesigned 2x2 Grid UI Layout featuring dynamic Lottie logic and intuitive brand-linked Support/About cards
+- **Per-App Configuration** - Auto-enable GameBar for specific applications
+- **Logging & Analytics** - Record and analyze performance data
+- **Gesture Controls** - Double-tap screenshot, long-press actions
+- **Device-Specific Overlays** - Easy hardware path configuration per device
+
+## Screenshots
+
+### GameBar Settings & Customization
+<p align="center">
+  <img src="readme_resources/settings_01.png" width="200" />
+  <img src="readme_resources/settings_02.png" width="200" />
+  <img src="readme_resources/settings_03.png" width="200" />
+  <img src="readme_resources/settings_04.png" width="200" />
+</p>
+<p align="center">
+  <img src="readme_resources/settings_05.png" width="200" />
+  <img src="readme_resources/settings_06.png" width="200" />
+  <img src="readme_resources/settings_07.png" width="200" />
+  <img src="readme_resources/settings_08.png" width="200" />
+</p>
+<p align="center">
+  <img src="readme_resources/settings_09.png" width="200" />
+  <img src="readme_resources/settings_10.png" width="200" />
+  <img src="readme_resources/settings_11.png" width="200" />
+  <img src="readme_resources/settings_12.png" width="200" />
+</p>
+
+### In-Game Overlay
+<p align="center">
+  <img src="readme_resources/ingame_01.png" width="250" />
+  <img src="readme_resources/ingame_02.png" width="250" />
+  <img src="readme_resources/ingame_03.png" width="250" />
+</p>
+<p align="center">
+  <img src="readme_resources/ingame_04.png" width="250" />
+  <img src="readme_resources/ingame_05.png" width="250" />
+  <img src="readme_resources/ingame_06.png" width="250" />
+</p>
+
+### Logging & Analytics
+<p align="center">
+  <img src="readme_resources/logs_01.png" width="200" />
+  <img src="readme_resources/logs_02.png" width="200" />
+  <img src="readme_resources/logs_03.png" width="200" />
+</p>
+<p align="center">
+  <img src="readme_resources/logs_04.png" width="200" />
+  <img src="readme_resources/logs_05.png" width="200" />
+</p>
+
+## Requirements
+
+- Android 13 (API 33) or higher
+- System-level permissions (privileged app)
+- LineageOS or AOSP-based ROM
+
+## Building
+
+### Prerequisites
+
+- AOSP/LineageOS build environment
+- Android SDK Platform 33+
+- Soong build system
+
+### Integration into Device Tree
+
+1. **Clone the repository** into your ROM source:
+   ```bash
+   git clone https://github.com/kenway214/packages_apps_GameBar.git /packages/apps/GameBar -b main
+   ```
+
+2. **Include in device makefile**:
+   
+   Add to your `device.mk`:
+   ```makefile
+   # GameBar Performance Overlay
+   $(call inherit-product, packages/apps/GameBar/gamebar.mk)
+   ```
+
+3. **Configure hardware paths (Optional)**:
+   
+   GameBar features a **dynamic sysfs detector** that automatically finds your thermal zones based on standard CPU, GPU, and RAM types. For most devices, **zero manual configuration** is needed!
+   
+   If auto-detection fails on your specific kernel, you can override the dynamic detector by using your device tree `config.xml` overlay:
+   
+   ```xml
+   <resources>
+       <!-- To hardcode a path, replace "dynamic" with the absolute sysfs path -->
+       <string name="config_cpu_temp_path">/sys/class/thermal/thermal_zone15/temp</string>
+       
+       <!-- Dividers are automatically calculated (0), but can be manually overridden -->
+       <integer name="config_cpu_temp_divider">1000</integer>
+   </resources>
+   ```
+
+4. **Customize init.rc** (if needed):
+   
+   Standard Android thermal zones (`/sys/class/thermal/*`) are globally readable by default. If your custom nodes (like kgsl GPU usage) require permissions, ensure you `chmod` them in your specific `init.<device>.rc`.
+
+5. **Build**:
+   ```bash
+   # Clean build (recommended for first build)
+   m clean
+   m GameBar
+   
+   # Or build entire ROM
+   brunch <device>
+   ```
+
+## Finding Device-Specific Paths
+
+Use these ADB commands to find the correct paths for your device:
+
+```bash
+# Find CPU thermal zones
+adb shell "for i in /sys/class/thermal/thermal_zone*/type; do echo \$i: \$(cat \$i); done" | grep -i cpu
+
+# Find GPU thermal zones  
+adb shell "for i in /sys/class/thermal/thermal_zone*/type; do echo \$i: \$(cat \$i); done" | grep -i gpu
+
+# Find RAM/DDR thermal zones
+adb shell "for i in /sys/class/thermal/thermal_zone*/type; do echo \$i: \$(cat \$i); done" | grep -i ddr
+
+# Check GPU paths
+adb shell "ls -la /sys/class/kgsl/kgsl-3d0/"
+
+# Check FPS path
+adb shell "cat /sys/class/drm/sde-crtc-0/measured_fps"
+
+# Check RAM frequency path
+adb shell "cat /sys/devices/system/cpu/bus_dcvs/DDR/cur_freq"
+```
+
+## Configuration
+
+### Overlay Customization
+
+GameBar supports runtime customization through Settings:
+
+- **Display Options**: Toggle individual metrics (FPS, CPU, GPU, RAM, temperatures)
+- **Visual Style**: Adjust text size, colors, background transparency, corner radius
+- **Position**: Choose from 9 predefined positions or enable draggable mode
+- **Update Interval**: Set refresh rate (500ms - 5000ms)
+- **FPS Method**: Choose between new (SurfaceFlinger) or legacy (sysfs) measurement
+
+### Per-App Auto-Enable
+
+Configure GameBar to automatically activate for specific apps:
+
+1. Open GameBar Settings
+2. Navigate to "Per-App GameBar" → "Configure Apps"
+3. Select apps from the list
+4. GameBar will auto-enable when those apps are in foreground
+
+## Usage
+
+### Quick Settings Tile
+- Add GameBar tile to Quick Settings.
+- **Tap** to toggle the overlay on/off.
+- **Long-press** to open settings.
+
+### Gesture Controls
+- **Double-tap overlay:** Start or stop recording performance data (like FPS). This is the primary logging method.
+- **Single-tap:** Toggle the overlay's visibility.
+- **Long-press:** Configurable action (hide overlay, take a screenshot, or open settings).
+- **Drag:** Move the overlay (when draggable mode is enabled).
+
+### How to Record a Performance Log
+The logging method has been simplified to a single, manual action.
+
+1.  **Enable the Overlay:** Open **Settings > System > GameBar** and turn on the main **"Enable GameBar Overlay"** switch. The overlay must be visible to start a recording.
+2.  **Run a Game:** Open the game or application you want to test.
+3.  **Start Recording:** When you are ready, **double-tap** the GameBar overlay. You will see an indicator that recording has started.
+4.  **Stop Recording:** Once you are finished, **double-tap** the overlay again. The log file will be saved automatically.
+
+### Viewing Your Recordings
+- All recordings are saved in one place:
+- Go to **Settings > System > GameBar > GameBar FPS Records** to view your list of saved logs.
+- From there, you can view detailed analytics for each session.
+
+## Troubleshooting
+
+### Overlay not showing
+- Check overlay permission in Settings → Apps → GameBa
+- Verify SELinux is not blocking (check `adb logcat | grep avc`)
+- Ensure init.rc permissions are applied (`adb shell ls -l /sys/class/...`)
+
+### Metrics showing "N/A"
+- Verify sysfs paths in overlay config.xml match your device
+- Check file permissions: `adb shell cat /sys/class/thermal/thermal_zone*/temp`
+- Review logcat for file access errors
+
+### Temperature values incorrect or missing
+- GameBar automatically detects if temperatures are milli/deci/celsius. If the value seems wrong, ensure your `config.xml` divider is set to `0` (auto), or manually override it completely (e.g., `1000` or `10`).
+- If your specific custom kernel uses a bizarre thermal zone name that is skipping detection, manually override the `"dynamic"` path in your `config.xml`.
+
+## Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test on your device
+5. Submit a pull request
+
+## License
+
+```
+Copyright (C) 2025 kenway214
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
+
+## Credits
+
+- Original concept inspired by various gaming overlays
+- Built for LineageOS and AOSP-based ROMs
+- Community contributions welcome
+- [ColorPicker](https://github.com/jaredrummler/ColorPicker)
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/kenway214/packages_apps_GameBar/issues)
+- **XDA Thread**: *Coming soon*
+- **Telegram**: [Pandemonium](https://t.me/pandemonium_haydn)
+
+---
+
+**Note**: This is a system application that requires privileged access. It must be built as part of your ROM and cannot be installed as a regular APK.
