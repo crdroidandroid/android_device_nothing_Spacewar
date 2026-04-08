@@ -1,0 +1,14 @@
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-FileCopyrightText: 2017 Jared Rummler
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="gamebar_ColorPickerViewStyle">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">315dp</item>
+  </style>
+
+</resources>

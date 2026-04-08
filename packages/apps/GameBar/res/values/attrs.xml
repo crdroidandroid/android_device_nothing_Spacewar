@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: 2025 kenway214
+     SPDX-License-Identifier: Apache-2.0
+-->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ResourceName">
+
+  <declare-styleable name="ColorPanelView">
+    <attr format="boolean" name="gamebar_showOldColor"/>
+    <attr format="enum" name="gamebar_colorShape">
+      <enum name="square" value="0"/>
+      <enum name="circle" value="1"/>
+    </attr>
+    <attr format="color|reference" name="gamebar_borderColor"/>
+  </declare-styleable>
+
+  <declare-styleable name="ColorPickerView" parent="ColorPanelView">
+    <attr format="boolean|reference" name="gamebar_alphaChannelVisible"/>
+    <attr format="string|reference" name="gamebar_alphaChannelText"/>
+    <attr format="color|reference" name="gamebar_sliderColor"/>
+    <attr name="gamebar_borderColor"/>
+  </declare-styleable>
+
+</resources>

@@ -22,7 +22,7 @@ $(call inherit-product, vendor/bcr/bcr.mk)
 $(call inherit-product, vendor/nothing/camera/nothing-camera.mk)
 
 # GameBar Performance Overlay
-$(call inherit-product, device/nothing/Spacewar/DeviceExtras/GameBar/gamebar.mk)
+$(call inherit-product, device/nothing/Spacewar/packages/apps/GameBar/gamebar.mk)
 
 PRODUCT_COPY_FILES += \
     vendor/nothing/camera/proprietary/system/etc/permissions/NTCamera-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/NTCamera-permissions.xml \
