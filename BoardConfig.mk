@@ -169,6 +169,7 @@ VENDOR_SECURITY_PATCH := 2026-04-16
 
 # SELinux
 include device/lineage/sepolicy/libperfmgr/sepolicy.mk
+include device/lineage/sepolicy/libion/sepolicy.mk
 include device/qcom/sepolicy_vndr/SEPolicy.mk
 
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
