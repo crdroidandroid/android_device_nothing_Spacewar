@@ -8,7 +8,8 @@ soong_namespace {
     imports: [
         "hardware/nothing",
         "hardware/google/interfaces",
-        "hardware/google/pixel",
+        "hardware/google/pixel/pixelstats",
+        "hardware/google/pixel/power-libperfmgr",
         "hardware/lineage/interfaces/power-libperfmgr",
         "vendor/nothing/Spacewar",
     ],
