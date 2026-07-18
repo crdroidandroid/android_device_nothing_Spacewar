@@ -5,6 +5,7 @@ app_domain(glyph_app)
 allow glyph_app {
   activity_service
   activity_task_service
+  app_function_service
   audio_service
   audioserver_service
   autofill_service
@@ -15,18 +16,20 @@ allow glyph_app {
   gpu_service
   hint_service
   media_session_service
+  mediaextractor_service
   mediaserver_service
   netstats_service
+  protolog_configuration_service
+  sensitive_content_protection_service
   sensorservice_service
+  statusbar_service
   surfaceflinger_service
+  thermal_service
   trust_service
+  uimode_service
   vibrator_manager_service
   virtual_device_native_service
   voiceinteraction_service
-  uimode_service
-  sensitive_content_protection_service
-  thermal_service
-  protolog_configuration_service
 }:service_manager find;
 
 dontaudit glyph_app default_prop:file { read open getattr map };
@@ -37,11 +40,10 @@ allow glyph_app system_app_data_file:{
   lnk_file
 } create_file_perms;
 
+allow glyph_app sysfs_leds:dir search;
+
 allow glyph_app sysfs_glyph:dir r_dir_perms;
 allow glyph_app sysfs_glyph:file rw_file_perms;
 
-allow glyph_app thermal_service:service_manager find;
-
 get_prop(glyph_app, audio_prop)
 get_prop(glyph_app, media_variant_prop)
-

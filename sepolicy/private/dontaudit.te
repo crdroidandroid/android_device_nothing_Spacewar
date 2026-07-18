@@ -6,3 +6,5 @@ dontaudit linkerconfig self:capability kill;
 
 # b/152468658
 dontaudit vdc self:capability kill;
+
+dontaudit priv_app zygote:unix_stream_socket getopt;
