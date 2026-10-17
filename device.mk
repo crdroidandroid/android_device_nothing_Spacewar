@@ -260,6 +260,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
+# Face unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # Fastboot
 PRODUCT_PACKAGES += \
     fastbootd
