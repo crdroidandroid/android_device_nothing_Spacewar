@@ -43,7 +43,7 @@ class PerAppLogManager private constructor() {
 
         private val CSV_HEADER = arrayOf(
             "DateTime",
-            "PackageName", 
+            "PackageName",
             "FPS",
             "Frame_Time",
             "Battery_Temp",
@@ -80,7 +80,7 @@ class PerAppLogManager private constructor() {
     fun setAppLoggingEnabled(context: Context, packageName: String, enabled: Boolean) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val current = prefs.getStringSet(PREF_PER_APP_ENABLED_APPS, emptySet())?.toMutableSet() ?: mutableSetOf()
-        
+
         if (enabled) {
             current.add(packageName)
         } else {
@@ -88,7 +88,7 @@ class PerAppLogManager private constructor() {
             // Stop logging for this app if it's currently active
             stopLoggingForApp(packageName)
         }
-        
+
         prefs.edit().putStringSet(PREF_PER_APP_ENABLED_APPS, current).apply()
     }
 
@@ -98,7 +98,7 @@ class PerAppLogManager private constructor() {
 
     fun onAppBecameForeground(context: Context, packageName: String) {
         if (currentForegroundApp == packageName) return
-        
+
         // Stop logging for previous app if it was being logged
         currentForegroundApp?.let { previousApp ->
             if (isAppLoggingActive(previousApp)) {
@@ -107,11 +107,11 @@ class PerAppLogManager private constructor() {
         }
 
         currentForegroundApp = packageName
-        
+
         // Start logging for new app if enabled AND per-app logging mode is active
         // Note: Per-app logging works independently of GameBar overlay visibility
         val gameDataExport = GameDataExport.getInstance()
-        if (isAppLoggingEnabled(context, packageName) && 
+        if (isAppLoggingEnabled(context, packageName) &&
             gameDataExport.getLoggingMode() == GameDataExport.LoggingMode.PER_APP &&
             gameDataExport.isCapturing()) {
             startLoggingForApp(packageName)
@@ -134,7 +134,7 @@ class PerAppLogManager private constructor() {
         val logData = mutableListOf<Array<String>>()
         logData.add(CSV_HEADER)
         activeLogSessions[packageName] = logData
-        
+
         Thread {
             try {
                 val context = android.app.ActivityThread.currentApplication()
@@ -148,9 +148,9 @@ class PerAppLogManager private constructor() {
                 activeLogResolutions[packageName] = "Unknown"
             }
         }.start()
-        
+
         listener?.onAppLoggingStarted(packageName)
-        
+
         // Show toast notification
         handler.post {
             try {
@@ -177,7 +177,7 @@ class PerAppLogManager private constructor() {
             Log.d(TAG, "Stopping logging for app: $packageName")
             exportPerAppDataToCsv(packageName, logData)
             listener?.onAppLoggingStopped(packageName)
-            
+
             // Show toast notification
             handler.post {
                 try {
@@ -298,8 +298,8 @@ class PerAppLogManager private constructor() {
 
     fun getAllPerAppLogFiles(): Map<String, List<File>> {
         val files = getLogsDirectory().listFiles { file ->
-            file.name.contains("_GameBar_log_") && 
-            file.name.endsWith(".csv") && 
+            file.name.contains("_GameBar_log_") &&
+            file.name.endsWith(".csv") &&
             !file.name.startsWith("GameBar_log_") // Exclude global logs
         } ?: emptyArray()
 
@@ -326,7 +326,7 @@ class PerAppLogManager private constructor() {
         }
         return dir
     }
-    
+
     /**
      * Start manual logging for an app via double-tap (even if not in enabled apps list)
      */
@@ -340,7 +340,7 @@ class PerAppLogManager private constructor() {
         val logData = mutableListOf<Array<String>>()
         logData.add(CSV_HEADER)
         activeLogSessions[packageName] = logData
-        
+
         Thread {
             try {
                 val context = android.app.ActivityThread.currentApplication()
@@ -354,9 +354,9 @@ class PerAppLogManager private constructor() {
                 activeLogResolutions[packageName] = "Unknown"
             }
         }.start()
-        
+
         listener?.onAppLoggingStarted(packageName)
-        
+
         // Show toast notification
         handler.post {
             try {
@@ -376,7 +376,7 @@ class PerAppLogManager private constructor() {
             }
         }
     }
-    
+
     /**
      * Stop manual logging for an app via double-tap
      */
@@ -390,7 +390,7 @@ class PerAppLogManager private constructor() {
             stopLoggingForApp(packageName)
         }
     }
-    
+
     fun handlePerAppLoggingStarted(context: Context) {
         // When per-app logging is started, check if current foreground app should be logged
         val foregroundApp = ForegroundAppDetector.getForegroundPackageName(context)

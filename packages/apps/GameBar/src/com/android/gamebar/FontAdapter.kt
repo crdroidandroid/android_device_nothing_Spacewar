@@ -49,7 +49,7 @@ class FontAdapter(
 
     override fun onBindViewHolder(holder: FontViewHolder, position: Int) {
         val fontItem = fonts[position]
-        
+
         holder.fontName.text = fontItem.displayName
         holder.fontPreview.text = "AaBbCc 123"
         holder.radioButton.isChecked = (position == selectedPosition)
@@ -76,20 +76,20 @@ class FontAdapter(
         if (selectedPosition != position) {
             val oldPosition = selectedPosition
             selectedPosition = position
-            
+
             // Update selection state
             if (oldPosition >= 0 && oldPosition < fonts.size) {
                 fonts[oldPosition].isSelected = false
                 notifyItemChanged(oldPosition)
             }
-            
+
             fonts[position].isSelected = true
             notifyItemChanged(position)
-            
+
             onFontSelected(fonts[position])
         }
     }
-    
+
     fun updateFonts(newFonts: List<FontItem>) {
         fonts = newFonts
         selectedPosition = fonts.indexOfFirst { it.isSelected }

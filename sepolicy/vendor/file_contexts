@@ -32,14 +32,6 @@
 # HALs
 /vendor/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.3-service\.nothing     u:object_r:hal_fingerprint_default_exec:s0
 
-# LEDs (Glyph AW210XX)
-/sys/class/leds/aw210xx_led(/.*)?                                                                u:object_r:sysfs_glyph:s0
-/sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led(/.*)?                          u:object_r:sysfs_glyph:s0
-/sys/devices/platform/soc/.*\/leds/aw210xx_led(/.*)?                                             u:object_r:sysfs_glyph:s0
-
-/sys/class/leds/aw210xx_led/(rear_cam_leds_effect|video_leds_effect)                             u:object_r:sysfs_glyph_cam:s0
-/sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/(rear_cam_leds_effect|video_leds_effect) u:object_r:sysfs_glyph_cam:s0
-
 # Power HAL
 /vendor/bin/hw/android\.hardware\.power-service\.lineage-libperfmgr                 u:object_r:hal_power_default_exec:s0
 

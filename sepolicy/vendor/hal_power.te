@@ -1,2 +1,2 @@
 # Power HAL
-rw_dir_file(hal_power_default, proc)
+r_dir_file(hal_power_default, proc)

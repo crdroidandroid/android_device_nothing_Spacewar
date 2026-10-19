@@ -179,7 +179,7 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
     }
 
     initialColor = getArguments().getInt(ARG_COLOR);
-    
+
     AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity()).setView(rootView)
         .setPositiveButton(selectedButtonStringRes, new DialogInterface.OnClickListener() {
           @Override public void onClick(DialogInterface dialog, int which) {
@@ -251,7 +251,7 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
   private void setupResetButton() {
     AlertDialog dialog = (AlertDialog) getDialog();
     if (dialog == null) return;
-    
+
     Button resetButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
     if (resetButton != null) {
       resetButton.setOnClickListener(new View.OnClickListener() {
@@ -487,7 +487,7 @@ public class ColorPickerDialog extends DialogFragment implements ColorPickerView
     View customPresetsDivider = contentView.findViewById(R.id.custom_presets_divider);
 
     loadPresets();
-    
+
     // Hide custom presets grid and divider - presets come from XML configuration
     customPresetsGrid.setVisibility(View.GONE);
     customPresetsDivider.setVisibility(View.GONE);

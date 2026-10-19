@@ -36,9 +36,9 @@ class GameDataExport private constructor() {
                 INSTANCE ?: GameDataExport().also { INSTANCE = it }
             }
         }
-        
+
         private const val MAX_ROWS = 10000 // Prevent unlimited memory growth
-        
+
         private val CSV_HEADER = arrayOf(
             "DateTime",
             "PackageName",
@@ -67,7 +67,7 @@ class GameDataExport private constructor() {
     private val statsRows = mutableListOf<Array<String>>()
     private var listener: CaptureStateListener? = null
     private val perAppLogManager = PerAppLogManager.getInstance()
-    
+
     fun setCaptureStateListener(listener: CaptureStateListener?) {
         this.listener = listener
     }
@@ -88,12 +88,12 @@ class GameDataExport private constructor() {
         }
         listener?.onCaptureStopped()
     }
-    
+
     fun clearData() {
         statsRows.clear()
         statsRows.add(CSV_HEADER)
     }
-    
+
     fun getDataSize(): Int {
         return statsRows.size
     }

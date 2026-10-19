@@ -42,7 +42,7 @@ class GameBarMonitorService : Service() {
             }
         }
     }
-    
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         if (!isRunning) {
             isRunning = true
@@ -54,14 +54,14 @@ class GameBarMonitorService : Service() {
         }
         return START_STICKY
     }
-    
+
     private fun monitorForegroundApp() {
         try {
             if (!isRunning) return
-            
+
             val prefs = PreferenceManager.getDefaultSharedPreferences(this)
             val masterEnabled = prefs.getBoolean("game_bar_enable", false)
-            
+
             if (masterEnabled) {
                 if (!lastGameBarState) {
                     val gameBar = GameBar.getInstance(this)
@@ -71,7 +71,7 @@ class GameBarMonitorService : Service() {
                 }
                 return
             }
-            
+
             val autoEnabled = prefs.getBoolean("game_bar_auto_enable", false)
             if (!autoEnabled) {
                 if (lastGameBarState) {
@@ -80,18 +80,18 @@ class GameBarMonitorService : Service() {
                 }
                 return
             }
-            
+
             val foreground = ForegroundAppDetector.getForegroundPackageName(this)
-            
+
             // Only update if foreground app changed
             if (foreground != lastForegroundApp) {
                 val autoApps = prefs.getStringSet(
-                    GameBarPerAppConfigFragment.PREF_AUTO_APPS, 
+                    GameBarPerAppConfigFragment.PREF_AUTO_APPS,
                     emptySet()
                 ) ?: emptySet()
-                    
+
                 val shouldShow = autoApps.contains(foreground)
-                
+
                 if (shouldShow && !lastGameBarState) {
                     val gameBar = GameBar.getInstance(this)
                     gameBar.applyPreferences()
@@ -101,16 +101,16 @@ class GameBarMonitorService : Service() {
                     GameBar.getInstance(this).hide()
                     lastGameBarState = false
                 }
-                
+
                 // Handle per-app logging state changes
                 if (lastForegroundApp.isNotEmpty() && lastForegroundApp != "Unknown") {
                     perAppLogManager.onAppWentToBackground(this, lastForegroundApp)
                 }
-                
+
                 if (foreground.isNotEmpty() && foreground != "Unknown") {
                     perAppLogManager.onAppBecameForeground(this, foreground)
                 }
-                
+
                 lastForegroundApp = foreground
             }
         } catch (e: Exception) {
@@ -126,21 +126,21 @@ class GameBarMonitorService : Service() {
     override fun onDestroy() {
         super.onDestroy()
         isRunning = false
-        
+
         handler?.let {
             monitorRunnable?.let { runnable ->
                 it.removeCallbacks(runnable)
             }
             it.removeCallbacksAndMessages(null)
         }
-        
+
         // Clean up GameBar instance
         try {
             GameBar.destroyInstance()
         } catch (e: Exception) {
             android.util.Log.e("GameBarMonitorService", "Error destroying GameBar instance", e)
         }
-        
+
         // Clear state variables to prevent lingering references
         lastForegroundApp = ""
         lastGameBarState = false

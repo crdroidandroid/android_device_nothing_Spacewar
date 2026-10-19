@@ -83,7 +83,7 @@ class PerAppLogReader {
 
     companion object {
         private const val TAG = "PerAppLogReader"
-        
+
         // CSV column indices (updated format)
         private const val COL_DATETIME = 0
         private const val COL_PACKAGE_NAME = 1
@@ -149,7 +149,7 @@ class PerAppLogReader {
 
             BufferedReader(FileReader(file)).use { reader ->
                 var line = reader.readLine()
-                
+
                 // Skip header
                 if (line != null && line.contains("DateTime")) {
                     val headers = line.split(",")
@@ -174,28 +174,28 @@ class PerAppLogReader {
                 while (line != null) {
                     lineCount++
                     val columns = line.split(",")
-                    
+
                     if (columns.size >= COL_FPS + 1) {
                         try {
                             // Extract timestamp
                             val timestampStr = columns[COL_DATETIME].trim()
-                            
+
                             // Extract FPS
                             val fpsStr = columns[COL_FPS].trim()
                             if (fpsStr.isNotEmpty() && fpsStr != "N/A" && fpsStr != "-") {
                                 val fps = fpsStr.toDoubleOrNull()
                                 if (fps != null && fps > 0) {
                                     fpsValues.add(fps)
-                                    
+
                                     // Parse timestamp and calculate relative time
                                     try {
                                         val dateFormat = java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.getDefault())
                                         val timestamp = dateFormat.parse(timestampStr)?.time ?: 0L
-                                        
+
                                         if (sessionStartTimeMs == 0L) {
                                             sessionStartTimeMs = timestamp
                                         }
-                                        
+
                                         // Store relative time in milliseconds
                                         val relativeTime = timestamp - sessionStartTimeMs
                                         fpsTimeData.add(Pair(relativeTime, fps))
@@ -205,7 +205,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract Frame Time
                             if (columns.size > COL_FRAME_TIME) {
                                 val frameTimeStr = columns[COL_FRAME_TIME].trim()
@@ -222,7 +222,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract CPU Usage
                             if (columns.size > COL_CPU_USAGE) {
                                 val cpuUsageStr = columns[COL_CPU_USAGE].trim()
@@ -272,7 +272,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract CPU Temp
                             if (columns.size > COL_CPU_TEMP) {
                                 val cpuTempStr = columns[COL_CPU_TEMP].trim()
@@ -337,7 +337,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract CPU Clock (multi-core data)
                             if (columns.size > COL_CPU_CLOCK) {
                                 val cpuClockStr = columns[COL_CPU_CLOCK].trim()
@@ -348,7 +348,7 @@ class PerAppLogReader {
                                     } else {
                                         lineCount * 1000L
                                     }
-                                    
+
                                     cpuClockStr.split(";").forEach { coreData ->
                                         try {
                                             // Extract cpu core id and frequency from "cpuX: YYYY MHz"
@@ -368,7 +368,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract GPU Usage
                             if (columns.size > COL_GPU_USAGE) {
                                 val gpuUsageStr = columns[COL_GPU_USAGE].trim()
@@ -385,7 +385,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract GPU Clock
                             if (columns.size > COL_GPU_CLOCK) {
                                 val gpuClockStr = columns[COL_GPU_CLOCK].trim()
@@ -402,7 +402,7 @@ class PerAppLogReader {
                                     }
                                 }
                             }
-                            
+
                             // Extract GPU Temp
                             if (columns.size > COL_GPU_TEMP) {
                                 val gpuTempStr = columns[COL_GPU_TEMP].trim()
@@ -465,12 +465,12 @@ class PerAppLogReader {
                                 packageName = columns[COL_PACKAGE_NAME].trim()
                             }
                             lastTimestamp = timestampStr
-                            
+
                         } catch (e: Exception) {
                             Log.w(TAG, "Error parsing line $lineCount: $line", e)
                         }
                     }
-                    
+
                     line = reader.readLine()
                 }
             }
@@ -482,22 +482,22 @@ class PerAppLogReader {
 
             // Calculate FPS statistics
             val fpsStats = calculateFpsStatistics(fpsValues)
-            
+
             // Calculate CPU statistics
             val cpuStats = calculateCpuStatistics(cpuUsageValues, cpuTempValues)
-            
+
             // Calculate GPU statistics
             val gpuStats = calculateGpuStatistics(gpuUsageValues, gpuClockValues, gpuTempValues)
 
             // Calculate Power statistics
             val powerStats = calculatePowerStatistics(powerValues)
-            
+
             // Calculate session duration
             val sessionDuration = calculateSessionDuration(firstTimestamp, lastTimestamp)
-            
+
             // Extract session date from filename
             val sessionDate = extractSessionDate(file.name)
-            
+
             // Extract resolution from filename
             val resolutionStr = extractSessionResolution(file.name)
 
@@ -527,7 +527,7 @@ class PerAppLogReader {
                 gpuClockTimeData = gpuClockTimeData,
                 powerTimeData = powerTimeData
             )
-            
+
         } catch (e: Exception) {
             Log.e(TAG, "Error analyzing log file: $logFilePath", e)
             null
@@ -559,14 +559,14 @@ class PerAppLogReader {
         }
 
         val sortedFps = fpsValues.sorted()
-        
+
         // Max and Min
         val maxFps = sortedFps.last()
         val minFps = sortedFps.first()
-        
+
         // Average
         val avgFps = fpsValues.average()
-        
+
         // Variance and Standard Deviation
         val variance = if (fpsValues.size > 1) {
             fpsValues.map { (it - avgFps).pow(2) }.sum() / fpsValues.size
@@ -574,11 +574,11 @@ class PerAppLogReader {
             0.0
         }
         val stdDev = sqrt(variance)
-        
+
         // Calculate 1% low and 0.1% low
         val fps1PercentLow = calculatePercentileLow(sortedFps, 0.01)
         val fps0_1PercentLow = calculatePercentileLow(sortedFps, 0.001)
-        
+
         // Calculate smoothness percentage (frames >= 45 FPS)
         val smoothFrames = fpsValues.count { it >= 45.0 }
         val smoothnessPercentage = (smoothFrames.toDouble() / fpsValues.size) * 100.0
@@ -602,11 +602,11 @@ class PerAppLogReader {
         val maxUsage = if (cpuUsageValues.isNotEmpty()) cpuUsageValues.maxOrNull() ?: 0.0 else 0.0
         val minUsage = if (cpuUsageValues.isNotEmpty()) cpuUsageValues.minOrNull() ?: 0.0 else 0.0
         val avgUsage = if (cpuUsageValues.isNotEmpty()) cpuUsageValues.average() else 0.0
-        
+
         val maxTemp = if (cpuTempValues.isNotEmpty()) cpuTempValues.maxOrNull() ?: 0.0 else 0.0
         val minTemp = if (cpuTempValues.isNotEmpty()) cpuTempValues.minOrNull() ?: 0.0 else 0.0
         val avgTemp = if (cpuTempValues.isNotEmpty()) cpuTempValues.average() else 0.0
-        
+
         return CpuStatistics(
             maxUsage = maxUsage,
             minUsage = minUsage,
@@ -616,7 +616,7 @@ class PerAppLogReader {
             avgTemp = avgTemp
         )
     }
-    
+
     /**
      * Calculate GPU statistics
      */
@@ -628,15 +628,15 @@ class PerAppLogReader {
         val maxUsage = if (gpuUsageValues.isNotEmpty()) gpuUsageValues.maxOrNull() ?: 0.0 else 0.0
         val minUsage = if (gpuUsageValues.isNotEmpty()) gpuUsageValues.minOrNull() ?: 0.0 else 0.0
         val avgUsage = if (gpuUsageValues.isNotEmpty()) gpuUsageValues.average() else 0.0
-        
+
         val maxClock = if (gpuClockValues.isNotEmpty()) gpuClockValues.maxOrNull() ?: 0.0 else 0.0
         val minClock = if (gpuClockValues.isNotEmpty()) gpuClockValues.minOrNull() ?: 0.0 else 0.0
         val avgClock = if (gpuClockValues.isNotEmpty()) gpuClockValues.average() else 0.0
-        
+
         val maxTemp = if (gpuTempValues.isNotEmpty()) gpuTempValues.maxOrNull() ?: 0.0 else 0.0
         val minTemp = if (gpuTempValues.isNotEmpty()) gpuTempValues.minOrNull() ?: 0.0 else 0.0
         val avgTemp = if (gpuTempValues.isNotEmpty()) gpuTempValues.average() else 0.0
-        
+
         return GpuStatistics(
             maxUsage = maxUsage,
             minUsage = minUsage,
@@ -660,16 +660,16 @@ class PerAppLogReader {
             avgPower = avgPower
         )
     }
-    
+
     /**
      * Calculate percentile low (e.g., 1% low = average of worst 1% of frames)
      */
     private fun calculatePercentileLow(sortedFps: List<Double>, percentile: Double): Double {
         if (sortedFps.isEmpty()) return 0.0
-        
+
         val count = (sortedFps.size * percentile).toInt().coerceAtLeast(1)
         val worstFrames = sortedFps.take(count)
-        
+
         return if (worstFrames.isNotEmpty()) {
             worstFrames.average()
         } else {
@@ -719,15 +719,15 @@ class PerAppLogReader {
         return try {
             val pattern = Regex("_(\\d{8})_(\\d{6})\\.csv$")
             val match = pattern.find(fileName)
-            
+
             if (match != null) {
                 val dateStr = match.groupValues[1]
                 val timeStr = match.groupValues[2]
-                
+
                 // Parse: yyyyMMdd_HHmmss
                 val inputFormat = java.text.SimpleDateFormat("yyyyMMddHHmmss", java.util.Locale.getDefault())
                 val outputFormat = java.text.SimpleDateFormat("MMM dd, yyyy HH:mm", java.util.Locale.getDefault())
-                
+
                 val date = inputFormat.parse(dateStr + timeStr)
                 if (date != null) {
                     outputFormat.format(date)
@@ -751,7 +751,7 @@ class PerAppLogReader {
         return try {
             val pattern = Regex("""_GameBar_log_([0-9x]+)_""")
             val match = pattern.find(fileName)
-            
+
             if (match != null) {
                 match.groupValues[1]
             } else {

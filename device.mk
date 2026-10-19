@@ -228,7 +228,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
     vendor.qti.hardware.camera.device@1.0.vendor
-    
+
 PRODUCT_PACKAGES += \
     libui-v34
 
@@ -288,6 +288,7 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     init.kernel.post_boot.sh \
     init.Spacewar.perf.rc \
+    init.Spacewar.rc \
     init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.sh \
@@ -302,8 +303,7 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.power.silence.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.power.silence.rc \
-    $(LOCAL_PATH)/rootdir/etc/init.nt.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.nt.rc
+    $(LOCAL_PATH)/rootdir/etc/init.power.silence.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.power.silence.rc
 
 # IPACM
 PRODUCT_PACKAGES += \

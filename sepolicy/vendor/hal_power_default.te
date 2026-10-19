@@ -5,11 +5,12 @@ allow hal_power_default {
 }:dir search;
 
 allow hal_power_default {
-  proc
   vendor_sysfs_graphics
   vendor_sysfs_devfreq
   vendor_sysfs_kgsl
   vendor_sysfs_msm_subsys
 }:{ file lnk_file } rw_file_perms;
+
+allow hal_power_default proc:file r_file_perms;
 
 allow hal_power_default vendor_sysfs_devfreq:dir r_dir_perms;

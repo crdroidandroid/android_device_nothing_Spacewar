@@ -91,7 +91,7 @@ GameBar is a comprehensive real-time performance monitoring overlay for Android 
    ```
 
 2. **Include in device makefile**:
-   
+
    Add to your `device.mk`:
    ```makefile
    # GameBar Performance Overlay
@@ -99,23 +99,23 @@ GameBar is a comprehensive real-time performance monitoring overlay for Android 
    ```
 
 3. **Configure hardware paths (Optional)**:
-   
+
    GameBar features a **dynamic sysfs detector** that automatically finds your thermal zones based on standard CPU, GPU, and RAM types. For most devices, **zero manual configuration** is needed!
-   
+
    If auto-detection fails on your specific kernel, you can override the dynamic detector by using your device tree `config.xml` overlay:
-   
+
    ```xml
    <resources>
        <!-- To hardcode a path, replace "dynamic" with the absolute sysfs path -->
        <string name="config_cpu_temp_path">/sys/class/thermal/thermal_zone15/temp</string>
-       
+
        <!-- Dividers are automatically calculated (0), but can be manually overridden -->
        <integer name="config_cpu_temp_divider">1000</integer>
    </resources>
    ```
 
 4. **Customize init.rc** (if needed):
-   
+
    Standard Android thermal zones (`/sys/class/thermal/*`) are globally readable by default. If your custom nodes (like kgsl GPU usage) require permissions, ensure you `chmod` them in your specific `init.<device>.rc`.
 
 5. **Build**:
@@ -123,7 +123,7 @@ GameBar is a comprehensive real-time performance monitoring overlay for Android 
    # Clean build (recommended for first build)
    m clean
    m GameBar
-   
+
    # Or build entire ROM
    brunch <device>
    ```
@@ -136,7 +136,7 @@ Use these ADB commands to find the correct paths for your device:
 # Find CPU thermal zones
 adb shell "for i in /sys/class/thermal/thermal_zone*/type; do echo \$i: \$(cat \$i); done" | grep -i cpu
 
-# Find GPU thermal zones  
+# Find GPU thermal zones
 adb shell "for i in /sys/class/thermal/thermal_zone*/type; do echo \$i: \$(cat \$i); done" | grep -i gpu
 
 # Find RAM/DDR thermal zones

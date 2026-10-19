@@ -32,17 +32,17 @@ class PresetAdapter(
 
     override fun onBindViewHolder(holder: PresetViewHolder, position: Int) {
         val preset = presets[position]
-        
+
         holder.nameTextView.text = preset.name
         holder.dateTextView.text = holder.itemView.context.getString(
             R.string.preset_created,
             preset.createdDate
         )
-        
+
         holder.itemView.setOnClickListener {
             onPresetClick(preset)
         }
-        
+
         holder.menuButton.setOnClickListener {
             onMenuClick(preset, it)
         }

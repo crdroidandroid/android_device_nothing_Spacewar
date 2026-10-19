@@ -1,0 +1,6 @@
+* text=auto
+*.ttf binary
+*.png binary
+*.jpg binary
+*.jar binary
+*.so binary

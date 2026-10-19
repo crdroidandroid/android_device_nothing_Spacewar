@@ -3,7 +3,6 @@ use.voice.path.for.pcm.voip=true
 
 # Audio Volume Steps
 ro.config.media_vol_steps=20
-ro.config.vc_call_vol_steps=6
 
 # Battery Saving
 persist.radio.add_power_save=1
@@ -28,8 +27,7 @@ ro.com.google.lens.oem_camera_package=com.nothing.camera
 persist.vendor.cne.feature=1
 
 # Deep Sleep
-pm.sleep_mode=1
-vendor.post_boot.parsed=1s
+vendor.post_boot.parsed=1
 
 # Display
 debug.sf.enable_hwc_vds=1

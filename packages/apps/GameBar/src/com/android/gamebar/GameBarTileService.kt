@@ -12,14 +12,14 @@ import androidx.preference.PreferenceManager
 import com.android.gamebar.R
 
 class GameBarTileService : TileService() {
-    
+
     private lateinit var gameBar: GameBar
 
     override fun onCreate() {
         super.onCreate()
         gameBar = GameBar.getInstance(this)
     }
-    
+
     private fun ensureGameBarInstance() {
         if (!GameBar.isInstanceCreated()) {
             gameBar = GameBar.getInstance(this)
@@ -48,16 +48,16 @@ class GameBarTileService : TileService() {
             // Ensure we have overlay permission before showing
             if (android.provider.Settings.canDrawOverlays(this)) {
                 android.util.Log.d("GameBarTileService", "Enabling GameBar from tile")
-                
+
                 // Ensure we have a GameBar instance
                 ensureGameBarInstance()
-                
+
                 // Force cleanup any existing overlay first
                 gameBar.hide()
-                
+
                 gameBar.applyPreferences()
                 gameBar.show()
-                
+
                 // Start monitor service if needed
                 val autoEnabled = prefs.getBoolean("game_bar_auto_enable", false)
                 if (autoEnabled) {
@@ -69,7 +69,7 @@ class GameBarTileService : TileService() {
                         .putBoolean("game_bar_enable", false)
                         .apply()
                 updateTileState(false)
-                
+
                 // Show permission request intent
                 val intent = android.content.Intent(android.provider.Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                         android.net.Uri.parse("package:$packageName"))
@@ -78,16 +78,16 @@ class GameBarTileService : TileService() {
             }
         } else {
             android.util.Log.d("GameBarTileService", "Disabling GameBar from tile")
-            
+
             // Ensure we have a GameBar instance to hide
             ensureGameBarInstance()
-            
+
             // Force hide the overlay
             gameBar.hide()
-            
+
             // Also destroy the singleton to ensure clean state
             GameBar.destroyInstance()
-            
+
             // Stop monitor service if auto-enable is also disabled
             val autoEnabled = prefs.getBoolean("game_bar_auto_enable", false)
             if (!autoEnabled) {
@@ -98,7 +98,7 @@ class GameBarTileService : TileService() {
 
     private fun updateTileState(enabled: Boolean) {
         val tile = qsTile ?: return
-        
+
         tile.state = if (enabled) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
         tile.label = getString(R.string.game_bar_tile_label)
         tile.contentDescription = getString(R.string.game_bar_tile_description)

@@ -17,7 +17,7 @@ import android.util.Log
 
 /**
  * Dedicated service for per-app logging that runs independently of GameBar display logic.
- * This service only monitors foreground app changes for logging purposes and doesn't 
+ * This service only monitors foreground app changes for logging purposes and doesn't
  * interfere with GameBar functionality.
  */
 class PerAppLogService : Service() {
@@ -69,7 +69,7 @@ class PerAppLogService : Service() {
 
             // Only run if per-app logging is active
             val gameDataExport = GameDataExport.getInstance()
-            if (gameDataExport.getLoggingMode() != GameDataExport.LoggingMode.PER_APP || 
+            if (gameDataExport.getLoggingMode() != GameDataExport.LoggingMode.PER_APP ||
                 !gameDataExport.isCapturing()) {
                 // Per-app logging is not active, stop service
                 Log.d(TAG, "Per-app logging not active, stopping service")

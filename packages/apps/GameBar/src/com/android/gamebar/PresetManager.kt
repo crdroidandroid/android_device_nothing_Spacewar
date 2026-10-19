@@ -34,7 +34,7 @@ class PresetManager private constructor(private val context: Context) {
 
         private const val PREF_PRESETS = "gamebar_presets"
         private const val PREF_PRESET_LIST = "gamebar_preset_list"
-        
+
         // Keys for settings to save in presets
         private val PRESET_KEYS = listOf(
             // Overlay Features
@@ -51,10 +51,10 @@ class PresetManager private constructor(private val context: Context) {
             "game_bar_gpu_usage_enable",
             "game_bar_gpu_clock_enable",
             "game_bar_gpu_temp_enable",
-            
+
             // FPS Measurement Method
             "game_bar_fps_method",
-            
+
             // Customization
             "game_bar_text_size",
             "game_bar_background_alpha",
@@ -69,10 +69,10 @@ class PresetManager private constructor(private val context: Context) {
             "game_bar_font_path",
             "game_bar_overlay_width_dp",
             "game_bar_format",
-            
+
             // Split Config
             "game_bar_split_mode",
-            
+
             // Gesture Controls
             "game_bar_single_tap_enable",
             "game_bar_single_tap_function",
@@ -81,7 +81,7 @@ class PresetManager private constructor(private val context: Context) {
             "game_bar_longpress_enable",
             "game_bar_longpress_function",
             "game_bar_longpress_timeout",
-            
+
             // Per-App Settings
             "game_bar_auto_enable"
         )
@@ -102,7 +102,7 @@ class PresetManager private constructor(private val context: Context) {
     fun getAllPresets(): List<Preset> {
         val presetList = mutableListOf<Preset>()
         val presetIds = getPresetIds()
-        
+
         for (id in presetIds) {
             val presetJson = prefs.getString("${PREF_PRESETS}_$id", null)
             presetJson?.let {
@@ -114,7 +114,7 @@ class PresetManager private constructor(private val context: Context) {
                 }
             }
         }
-        
+
         return presetList.sortedByDescending { it.createdDate }
     }
 
@@ -126,24 +126,24 @@ class PresetManager private constructor(private val context: Context) {
             val id = UUID.randomUUID().toString()
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
             val createdDate = dateFormat.format(Date())
-            
+
             val settings = mutableMapOf<String, Any>()
             for (key in PRESET_KEYS) {
                 val value = prefs.all[key]
                 value?.let { settings[key] = it }
             }
-            
+
             val preset = Preset(id, name, createdDate, settings)
             val json = presetToJson(preset)
-            
+
             // Save preset
             prefs.edit().putString("${PREF_PRESETS}_$id", json).apply()
-            
+
             // Add to preset list
             val presetIds = getPresetIds().toMutableSet()
             presetIds.add(id)
             savePresetIds(presetIds)
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to save preset", e)
@@ -158,7 +158,7 @@ class PresetManager private constructor(private val context: Context) {
         try {
             val presetJson = prefs.getString("${PREF_PRESETS}_$presetId", null) ?: return false
             val preset = parsePresetFromJson(presetJson)
-            
+
             val editor = prefs.edit()
             for ((key, value) in preset.settings) {
                 when (value) {
@@ -170,7 +170,7 @@ class PresetManager private constructor(private val context: Context) {
                 }
             }
             editor.apply()
-            
+
             // Notify GameBar to reload settings
             if (GameBar.isInstanceCreated()) {
                 val gameBar = GameBar.getInstance(context)
@@ -180,7 +180,7 @@ class PresetManager private constructor(private val context: Context) {
                     gameBar.show()
                 }
             }
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to load preset", e)
@@ -194,11 +194,11 @@ class PresetManager private constructor(private val context: Context) {
     fun deletePreset(presetId: String): Boolean {
         try {
             prefs.edit().remove("${PREF_PRESETS}_$presetId").apply()
-            
+
             val presetIds = getPresetIds().toMutableSet()
             presetIds.remove(presetId)
             savePresetIds(presetIds)
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to delete preset", e)
@@ -212,11 +212,11 @@ class PresetManager private constructor(private val context: Context) {
     fun exportPreset(presetId: String, outputFile: File): Boolean {
         try {
             val presetJson = prefs.getString("${PREF_PRESETS}_$presetId", null) ?: return false
-            
+
             FileOutputStream(outputFile).use { fos ->
                 fos.write(presetJson.toByteArray())
             }
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to export preset", e)
@@ -232,23 +232,23 @@ class PresetManager private constructor(private val context: Context) {
             val json = FileInputStream(inputFile).use { fis ->
                 fis.readBytes().toString(Charsets.UTF_8)
             }
-            
+
             // Parse to validate
             val preset = parsePresetFromJson(json)
-            
+
             // Generate new ID for imported preset
             val newId = UUID.randomUUID().toString()
             val newPreset = preset.copy(id = newId)
             val newJson = presetToJson(newPreset)
-            
+
             // Save imported preset
             prefs.edit().putString("${PREF_PRESETS}_$newId", newJson).apply()
-            
+
             // Add to preset list
             val presetIds = getPresetIds().toMutableSet()
             presetIds.add(newId)
             savePresetIds(presetIds)
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to import preset", e)
@@ -265,7 +265,7 @@ class PresetManager private constructor(private val context: Context) {
             val preset = parsePresetFromJson(presetJson)
             val updatedPreset = preset.copy(name = newName)
             val updatedJson = presetToJson(updatedPreset)
-            
+
             prefs.edit().putString("${PREF_PRESETS}_$presetId", updatedJson).apply()
             return true
         } catch (e: Exception) {
@@ -280,22 +280,22 @@ class PresetManager private constructor(private val context: Context) {
     fun resetToDefaults(): Boolean {
         try {
             val editor = prefs.edit()
-            
+
             // Clear all preset-related settings
             for (key in PRESET_KEYS) {
                 editor.remove(key)
             }
-            
+
             // Clear warning dialog preference
             editor.remove("dont_show_longpress_warning")
-            
+
             editor.apply()
-            
+
             // Reload GameBar to apply defaults
             if (GameBar.isInstanceCreated()) {
                 GameBar.getInstance(context).applyPreferences()
             }
-            
+
             return true
         } catch (e: Exception) {
             android.util.Log.e("PresetManager", "Failed to reset to defaults", e)
@@ -327,13 +327,13 @@ class PresetManager private constructor(private val context: Context) {
         json.put("id", preset.id)
         json.put("name", preset.name)
         json.put("createdDate", preset.createdDate)
-        
+
         val settingsJson = JSONObject()
         for ((key, value) in preset.settings) {
             settingsJson.put(key, value)
         }
         json.put("settings", settingsJson)
-        
+
         return json.toString()
     }
 
@@ -342,17 +342,17 @@ class PresetManager private constructor(private val context: Context) {
         val id = json.getString("id")
         val name = json.getString("name")
         val createdDate = json.getString("createdDate")
-        
+
         val settingsJson = json.getJSONObject("settings")
         val settings = mutableMapOf<String, Any>()
-        
+
         val keys = settingsJson.keys()
         while (keys.hasNext()) {
             val key = keys.next()
             val value = settingsJson.get(key)
             settings[key] = value
         }
-        
+
         return Preset(id, name, createdDate, settings)
     }
 }

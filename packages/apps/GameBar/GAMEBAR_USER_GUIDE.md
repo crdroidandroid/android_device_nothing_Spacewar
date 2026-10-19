@@ -237,7 +237,7 @@ Comparing Browsers:
 Chrome vs Firefox vs Edge
 
 📊 Chrome: 59 FPS avg, 40% CPU
-📊 Firefox: 57 FPS avg, 38% CPU  
+📊 Firefox: 57 FPS avg, 38% CPU
 📊 Edge: 60 FPS avg, 42% CPU
 ```
 
