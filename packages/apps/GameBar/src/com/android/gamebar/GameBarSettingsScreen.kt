@@ -638,7 +638,7 @@ fun AboutGameBarCard() {
         ) {
             val packageInfo = runCatching { context.packageManager.getPackageInfo(context.packageName, 0) }.getOrNull()
             val versionName = packageInfo?.versionName ?: "1.0"
-            
+
             Text(
                 text = "GameBar v$versionName",
                 style = MaterialTheme.typography.headlineMedium,
@@ -674,7 +674,7 @@ fun AboutGameBarCard() {
                 horizontalArrangement = Arrangement.Center
             ) {
                 androidx.compose.material3.Button(
-                    onClick = { 
+                    onClick = {
                         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kenway214/packages_apps_GameBar")))
                     },
                     modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)
@@ -687,9 +687,9 @@ fun AboutGameBarCard() {
                     Spacer(modifier = Modifier.width(8.dp))
                     Text("GitHub")
                 }
-                
+
                 androidx.compose.material3.Button(
-                    onClick = { 
+                    onClick = {
                         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kenway214/packages_apps_GameBar/issues")))
                     },
                     modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)
@@ -704,7 +704,7 @@ fun AboutGameBarCard() {
                 }
 
                 androidx.compose.material3.Button(
-                    onClick = { 
+                    onClick = {
                         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/pandemonium_haydn")))
                     },
                     modifier = Modifier.padding(horizontal = 4.dp, vertical = 4.dp)

@@ -3,4 +3,16 @@ get_prop(vendor_init, bootanim_system_prop)
 # Allow vendor init to set SSR property
 set_prop(vendor_init, vendor_ssr_prop)
 
-allow vendor_init sysfs_type:file setattr;
+allow vendor_init {
+  sysfs
+  sysfs_glyph
+  sysfs_glyph_cam
+  sysfs_leds
+  sysfs_powershare
+  sysfs_thermal
+  sysfs_torch
+  vendor_sysfs_battery_supply
+  vendor_sysfs_graphics
+  vendor_sysfs_sensors
+  vendor_sysfs_usb_supply
+}:file setattr;

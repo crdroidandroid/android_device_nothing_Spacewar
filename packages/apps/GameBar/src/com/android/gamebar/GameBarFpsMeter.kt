@@ -25,7 +25,7 @@ class GameBarFpsMeter private constructor(context: Context) {
         private const val TOLERANCE = 0.1f
         private const val STALENESS_THRESHOLD_MS = 2000L
         private const val TASK_CHECK_INTERVAL_MS = 1000L
-        
+
         @Volatile
         private var INSTANCE: GameBarFpsMeter? = null
 
@@ -47,7 +47,7 @@ class GameBarFpsMeter private constructor(context: Context) {
     private var currentTaskId = -1
     private var lastFpsUpdateTime = System.currentTimeMillis()
     private val handler = Handler()
-    
+
     // FPS history for percentile calculations
     private val fpsHistory = mutableListOf<Float>()
     private val maxHistorySize = 100
@@ -59,7 +59,7 @@ class GameBarFpsMeter private constructor(context: Context) {
                     if (fps > 0) {
                         currentFps = fps
                         lastFpsUpdateTime = System.currentTimeMillis()
-                        
+
                         synchronized(fpsHistory) {
                             fpsHistory.add(fps)
                             if (fpsHistory.size > maxHistorySize) {
@@ -121,7 +121,7 @@ class GameBarFpsMeter private constructor(context: Context) {
         } else {
             currentFps
         }
-        
+
         // Add to history for legacy method
         if (method == "legacy" && fps > 0) {
             synchronized(fpsHistory) {
@@ -131,36 +131,36 @@ class GameBarFpsMeter private constructor(context: Context) {
                 }
             }
         }
-        
+
         return fps
     }
-    
+
     /**
      * Updates dynamically every frame after initial 100 samples
      */
     fun get1PercentLowFps(): Float {
         synchronized(fpsHistory) {
             if (fpsHistory.size < 100) return -1f
-            
+
             val sorted = fpsHistory.sorted()
             val index = (sorted.size * 0.01).toInt().coerceAtLeast(0)
             return sorted[index]
         }
     }
-    
+
     /**
      * Updates dynamically every frame after initial 100 samples
      */
     fun get01PercentLowFps(): Float {
         synchronized(fpsHistory) {
             if (fpsHistory.size < 100) return -1f
-            
+
             val sorted = fpsHistory.sorted()
             val index = (sorted.size * 0.001).toInt().coerceAtLeast(0)
             return sorted[index]
         }
     }
-    
+
     /**
      * Clear FPS history
      */

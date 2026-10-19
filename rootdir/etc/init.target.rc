@@ -101,9 +101,6 @@ on post-fs
     rm /data/resource-cache
     rm /data/system/package_cache
 
-on post-fs-data
-    mkdir /data/vendor/goodix 0700 system system
-
 on fs && property:ro.boot.product.vendor.sku=lahaina
     mkdir /mnt/vendor/spunvm 0660 system system
     wait /dev/block/bootdevice/by-name/spunvm
@@ -113,26 +110,9 @@ on late-fs
     mount_all /vendor/etc/fstab.default --late
 
 on post-fs-data
-    restorecon_recursive /mnt/vendor/persist
-    mkdir /mnt/vendor/persist/camera 0777 cameraserver cameraserver
     mkdir /vendor/data/tombstones 0771 system system
     # Enable WLAN cold boot calibration
     write /sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/fs_ready 1
-
-on post-fs-data
-    mkdir /data/vendor/camera 0775 camera camera
-    copy /mnt/vendor/persist/camera/bokeh_caldata_uw_persist.bin /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    chmod 0444 /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    chown cameraserver audio /data/vendor/camera/bokeh_caldata_uw_persist.bin
-    copy /mnt/vendor/persist/camera/ois_caldata_wide_persist.bin /data/vendor/camera/ois_caldata_wide_persist.bin
-    chmod 0444 /data/vendor/camera/ois_caldata_wide_persist.bin
-    chown cameraserver audio /data/vendor/camera/ois_caldata_wide_persist.bin
-
-on post-fs-data
-    chmod 0660 /dev/pn553
-    chown nfc nfc /dev/pn553
-    mkdir /data/vendor/nfc 0777 nfc nfc
-    mkdir /data/vendor/nfc/param 0777 nfc nfc
 
 on early-boot
     start vendor.sensors
@@ -177,14 +157,6 @@ on boot
     #add for TP to write mode
     chown system system /sys/bus/spi/devices/spi0.0/fts_edge_mode
     chown system system /sys/bus/spi/devices/spi0.0/fts_gesture_mode
-    # add for cit to write wireless_boost_en
-    #chown system system /sys/class/qcom-battery/wireless_boost_en
-    # add for cit to write wls_st38_reg
-    #chown system system /sys/class/qcom-battery/wls_st38_reg
-    # add for runin to write charger
-    #chown system system /sys/class/qcom-battery/usb_charger_en
-    # add for slowcharge need to write charger
-    #chown system system /sys/class/qcom-battery/slowcharge_en
     # add for ledTest to write led brightness
     chown system system /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/all_white_leds_br
     chown system system /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/glo_current
@@ -347,35 +319,6 @@ service fan_control_turn_off /vendor/bin/fan_control 0
     user root
     disabled
     oneshot
-
-#dandy add for fix ABR-942
-#Increase boot light effect@{
-on property:service.bootanim.exit=0
-   write /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/bootan_leds_effect 1
-on property:service.bootanim.exit=1
-   write /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/bootan_leds_effect 0
-#@}
-
-#ningfei add for fix ABR-3149
-#add system group for charger node@{
-on property:service.bootanim.exit=1
-    # add for cit to write wireless_boost_en
-    chown system system /sys/class/qcom-battery/wireless_boost_en
-    # add for cit to write wls_st38_reg
-    chown system system /sys/class/qcom-battery/wls_st38_reg
-    # add for runin to write charger
-    chown system system /sys/class/qcom-battery/usb_charger_en
-    # add for slowcharge need to write charger
-    chown system system /sys/class/qcom-battery/slowcharge_en
-    # add for wls charge online config
-    chown system system /sys/class/qcom-battery/wls_chg_param
-    # add for slowcharge need to write charger
-    chown system system /sys/class/qcom-battery/charge_pump_enable
-    # add for ABR-2547
-    chown system system /sys/class/qcom-battery/charge_power
-    # add for TFT-449
-    chown system system /sys/class/qcom-battery/wls_en
-#@}
 
 # funk.tan for ship_mode @{
 on property:sys.ship_mode.enable=0

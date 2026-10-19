@@ -12,4 +12,4 @@ PRODUCT_PACKAGES += \
     init.gamebar.rc
 
 # Gamebar sepolicy
-include device/nothing/Spacewar/packages/apps/GameBar/sepolicy/SEPolicy.mk
+include $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))/sepolicy/SEPolicy.mk

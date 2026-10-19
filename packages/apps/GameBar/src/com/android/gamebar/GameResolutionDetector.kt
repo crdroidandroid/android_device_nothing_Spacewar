@@ -23,7 +23,7 @@ object GameResolutionDetector {
             val reader = BufferedReader(InputStreamReader(process.inputStream))
             val content = reader.readText()
             process.waitFor()
-            
+
             if (content.isBlank()) {
                 return@runCatching detectRenderResolutionFromSurfaceFlinger(packageName) ?: fallback
             }
@@ -36,7 +36,7 @@ object GameResolutionDetector {
                     if (w == null || h == null || w <= 0 || h <= 0) null else (w to h)
                 }
                 .toList()
-                
+
             if (matches.isEmpty()) {
                 return@runCatching detectRenderResolutionFromSurfaceFlinger(packageName) ?: fallback
             }
@@ -57,7 +57,7 @@ object GameResolutionDetector {
             val reader = BufferedReader(InputStreamReader(process.inputStream))
             val out = reader.readText()
             process.waitFor()
-            
+
             if (out.isBlank()) return@runCatching null
 
             val lines = out.lineSequence()

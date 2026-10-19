@@ -76,7 +76,7 @@
                 android:value="com.android.settings.category.ia.system" />
             <meta-data
                 android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_gamebar" />    
+                android:resource="@drawable/ic_gamebar" />
         </activity>
 
         <activity-alias

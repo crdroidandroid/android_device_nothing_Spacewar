@@ -59,7 +59,7 @@ class GameBarSettingsActivity : FragmentActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        
+
         when (requestCode) {
             OVERLAY_PERMISSION_REQUEST_CODE -> {
                 if (Settings.canDrawOverlays(this)) {

@@ -294,7 +294,7 @@ on post-fs-data
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
-    mkdir /data/vendor/secure_element 0777 system system
+    mkdir /data/vendor/secure_element 0770 system system
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
@@ -439,7 +439,7 @@ on property:sys.boot_completed=1
 
 # corefile limit
 on property:persist.debug.trace=1
-    mkdir /data/core 0777 root root
+    mkdir /data/core 0770 root root
     write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
 
 on property:vendor.media.target.version=*

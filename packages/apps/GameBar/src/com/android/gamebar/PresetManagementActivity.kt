@@ -39,11 +39,11 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preset_management)
-        
+
         title = getString(R.string.preset_saved_presets)
-        
+
         presetManager = PresetManager.getInstance(this)
-        
+
         initViews()
         setupRecyclerView()
         loadPresets()
@@ -53,7 +53,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
         recyclerView = findViewById(R.id.rv_presets)
         emptyView = findViewById(R.id.empty_state)
         emptyTextView = findViewById(R.id.tv_empty_message)
-        
+
         emptyTextView.text = getString(R.string.preset_no_presets_desc)
     }
 
@@ -67,7 +67,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
                 showPresetMenu(preset, view)
             }
         )
-        
+
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = presetAdapter
     }
@@ -75,7 +75,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
     private fun loadPresets() {
         val presets = presetManager.getAllPresets()
         presetAdapter.updatePresets(presets)
-        
+
         if (presets.isEmpty()) {
             recyclerView.visibility = View.GONE
             emptyView.visibility = View.VISIBLE
@@ -103,7 +103,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
                 getString(R.string.toast_preset_loaded, preset.name),
                 Toast.LENGTH_SHORT
             ).show()
-            
+
             // Set result to notify parent activity to refresh
             setResult(RESULT_OK)
             finish()
@@ -118,7 +118,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
         popupMenu.menu.add(0, 2, 0, R.string.preset_action_export)
         popupMenu.menu.add(0, 3, 0, R.string.preset_action_rename)
         popupMenu.menu.add(0, 4, 0, R.string.preset_action_delete)
-        
+
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 1 -> {
@@ -140,7 +140,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
                 else -> false
             }
         }
-        
+
         popupMenu.show()
     }
 
@@ -149,7 +149,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
             val fileName = "GameBar_Preset_${preset.name.replace(" ", "_")}_$timeStamp.json"
             val file = File(Environment.getExternalStorageDirectory(), fileName)
-            
+
             if (presetManager.exportPreset(preset.id, file)) {
                 // Share the exported file
                 val uri = FileProvider.getUriForFile(
@@ -157,16 +157,16 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
                     "${packageName}.fileprovider",
                     file
                 )
-                
+
                 val shareIntent = Intent(Intent.ACTION_SEND).apply {
                     type = "application/json"
                     putExtra(Intent.EXTRA_STREAM, uri)
                     putExtra(Intent.EXTRA_SUBJECT, "GameBar Preset: ${preset.name}")
                     addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                 }
-                
+
                 startActivity(Intent.createChooser(shareIntent, getString(R.string.preset_action_export)))
-                
+
                 Toast.makeText(
                     this,
                     getString(R.string.toast_preset_exported, file.absolutePath),
@@ -186,7 +186,7 @@ class PresetManagementActivity : CollapsingToolbarBaseActivity() {
             hint = getString(R.string.hint_preset_name)
             setPadding(50, 30, 50, 30)
         }
-        
+
         AlertDialog.Builder(this)
             .setTitle(R.string.dialog_title_rename_preset)
             .setView(input)

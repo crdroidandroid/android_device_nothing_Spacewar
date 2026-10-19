@@ -1,8 +1,10 @@
 # GameBar sepolicy
 
+GAMEBAR_SEPOLICY_PATH := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+
 BOARD_VENDOR_SEPOLICY_DIRS += \
-     packages/apps/GameBar/sepolicy/vendor
+     $(GAMEBAR_SEPOLICY_PATH)/vendor
 PRODUCT_PRIVATE_SEPOLICY_DIRS += \
-     packages/apps/GameBar/sepolicy/private
+     $(GAMEBAR_SEPOLICY_PATH)/private
 PRODUCT_PUBLIC_SEPOLICY_DIRS += \
-     packages/apps/GameBar/sepolicy/public
+     $(GAMEBAR_SEPOLICY_PATH)/public

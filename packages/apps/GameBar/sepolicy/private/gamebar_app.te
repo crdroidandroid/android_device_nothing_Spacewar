@@ -32,7 +32,7 @@ binder_call(gamebar_app, gpuservice)
 # Allow reading thermal sensor data
 r_dir_file(gamebar_app, sysfs_thermal)
 allow gamebar_app sysfs_thermal:file { read open };
-allow gamebar_app sysfs:file { read open };
-allow gamebar_app sysfs:file { read open getattr ioctl };
+#allow gamebar_app sysfs:file { read open };
+#allow gamebar_app sysfs:file { read open getattr ioctl };
 allow gamebar_app proc_stat:file r_file_perms;
 allow gamebar_app system_server:binder { call transfer };

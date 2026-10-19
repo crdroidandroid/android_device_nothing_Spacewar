@@ -19,7 +19,7 @@ object ForegroundAppDetector {
     private var lastKnownPackage = "Unknown"
     private var lastUpdateTime = 0L
     private const val CACHE_TIMEOUT = 500L // Reduce cache timeout
-    
+
     // Simple reflection caching
     private var reflectionSetupFailed = false
 
@@ -36,7 +36,7 @@ object ForegroundAppDetector {
             lastUpdateTime = currentTime
             return pkg
         }
-        
+
         if (!reflectionSetupFailed) {
             val reflectionPkg = tryReflectActivityTaskManager()
             if (reflectionPkg != null) {
@@ -45,7 +45,7 @@ object ForegroundAppDetector {
                 return reflectionPkg
             }
         }
-        
+
         // Return cached value if available, otherwise "Unknown"
         return lastKnownPackage
     }
@@ -75,13 +75,13 @@ object ForegroundAppDetector {
             if (reflectionSetupFailed) {
                 return null
             }
-            
+
             val atmClass = Class.forName("android.app.ActivityTaskManager")
             val getServiceMethod = atmClass.getDeclaredMethod("getService")
             getServiceMethod.isAccessible = true
             val atmService = getServiceMethod.invoke(null)
             val getTasksMethod = atmService.javaClass.getMethod("getTasks", Int::class.java)
-            
+
             @Suppress("UNCHECKED_CAST")
             val taskList = getTasksMethod.invoke(atmService, 1) as? List<*>
             if (!taskList.isNullOrEmpty()) {

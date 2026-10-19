@@ -54,9 +54,9 @@ class GameBarFontSelectorActivity : CollapsingToolbarBaseActivity() {
         // Load fonts from assets
         try {
             val fontFiles = assets.list("fonts") ?: emptyArray()
-            
+
             fontFiles.filter { fileName ->
-                fileName.endsWith(".ttf", ignoreCase = true) || 
+                fileName.endsWith(".ttf", ignoreCase = true) ||
                 fileName.endsWith(".otf", ignoreCase = true)
             }.forEach { fileName ->
                 val nameWithoutExt = fileName.substringBeforeLast(".")
@@ -87,7 +87,7 @@ class GameBarFontSelectorActivity : CollapsingToolbarBaseActivity() {
             fontList.sortBy { it.displayName }
             fontList.add(0, defaultFont)
         }
-        
+
         // Store all fonts for filtering
         allFonts.addAll(fontList)
     }
@@ -116,19 +116,19 @@ class GameBarFontSelectorActivity : CollapsingToolbarBaseActivity() {
 
         recyclerView.adapter = fontAdapter
     }
-    
+
     private fun setupSearch() {
         searchBox.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 filterFonts(s.toString())
             }
-            
+
             override fun afterTextChanged(s: Editable?) {}
         })
     }
-    
+
     private fun filterFonts(query: String) {
         val filtered = if (query.isEmpty()) {
             allFonts
@@ -138,7 +138,7 @@ class GameBarFontSelectorActivity : CollapsingToolbarBaseActivity() {
                 font.name.contains(query, ignoreCase = true)
             }
         }
-        
+
         fontAdapter.updateFonts(filtered)
     }
 }

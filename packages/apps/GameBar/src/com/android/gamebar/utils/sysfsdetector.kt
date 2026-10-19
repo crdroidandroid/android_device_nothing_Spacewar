@@ -14,7 +14,7 @@ import java.io.File
  */
 object SysfsDetector {
     private const val TAG = "SysfsDetector"
-    
+
     // Cache for detected paths to avoid repeated filesystem scans
     private val detectedPaths = mutableMapOf<String, String?>()
 
@@ -61,11 +61,11 @@ object SysfsDetector {
     fun getBatteryTempInfo(): Pair<String?, Int> {
         val path = getBatteryTempPath()
         if (path == null) return Pair(null, 1000)
-        
+
         if (detectedDividers.containsKey("battery_temp")) {
             return Pair(path, detectedDividers["battery_temp"]!!)
         }
-        
+
         // Detectar divisor automáticamente
         val divider = detectTemperatureDivider(path)
         detectedDividers["battery_temp"] = divider
@@ -75,7 +75,7 @@ object SysfsDetector {
     /**
      * Dynamically searches for CPU temperature node with type-based prioritization
      * For cpuss-0, cpuss-1, etc., selects the first available one
-     * 
+     *
      * @return The path to CPU temperature node or null if not found
      */
     private fun findCpuTempPath(): String? {
@@ -112,13 +112,13 @@ object SysfsDetector {
                     if (typeFile.exists() && tempFile.exists() && tempFile.canRead()) {
                         try {
                             val type = typeFile.readText().trim().lowercase()
-                            
+
                             // For cpuss, accept any cpuss-* variant (cpuss-0, cpuss-1, etc.)
                             val isMatch = when {
                                 priorityType == "cpuss" && type.startsWith("cpuss") -> true
                                 else -> type == priorityType
                             }
-                            
+
                             if (isMatch) {
                                 detectedPaths["cpu_temp"] = tempFile.absolutePath
                                 Log.d(TAG, "Found CPU temp (priority): ${tempFile.absolutePath} (type=$type)")
@@ -139,14 +139,14 @@ object SysfsDetector {
                 if (typeFile.exists() && tempFile.exists() && tempFile.canRead()) {
                     try {
                         val type = typeFile.readText().trim().lowercase()
-                        
+
                         // Look for patterns indicating CPU sensor
-                        if (type.contains("cpu") || 
-                            type.contains("core") || 
+                        if (type.contains("cpu") ||
+                            type.contains("core") ||
                             type.contains("cluster") ||
                             type.contains("tsens") ||
                             type.startsWith("thermal")) {
-                            
+
                             // Read value to verify it's a reasonable temperature
                             val tempValue = tempFile.readText().trim().toIntOrNull()
                             if (tempValue != null && tempValue in 20000..90000) { // 20-90°C in milli
@@ -169,7 +169,7 @@ object SysfsDetector {
 
     /**
      * Gets CPU temperature path and divider information
-     * 
+     *
      * @return Pair containing path and divider, or (null, 1000) if not found
      */
     fun getCpuTempInfo(): Pair<String?, Int> {
@@ -198,7 +198,7 @@ object SysfsDetector {
         "/sys/class/oplus_chg/bq27541/temp",
         "/sys/class/thermal/thermal_zone0/temp"
     )
-    
+
     private val FPS_PATHS = arrayOf(
         "/sys/class/drm/card0/sde_crtc_fps",
         "/sys/class/graphics/fb0/fps",
@@ -212,7 +212,7 @@ object SysfsDetector {
     private fun detectPath(pathType: String, possiblePaths: Array<String>): String? {
         // Check cache first
         detectedPaths[pathType]?.let { return it }
-        
+
         for (path in possiblePaths) {
             val file = File(path)
             if (file.exists() && file.canRead()) {
@@ -221,7 +221,7 @@ object SysfsDetector {
                 return path
             }
         }
-        
+
         Log.w(TAG, "No valid path found for $pathType")
         detectedPaths[pathType] = null
         return null
@@ -280,7 +280,7 @@ object SysfsDetector {
                 return Pair(path, divider)
             }
         }
-        
+
         return Pair(null, 1000)
     }
 
@@ -307,9 +307,9 @@ object SysfsDetector {
     }
 
     // Public API for each hardware component
-    
+
     fun getFpsPath(): String? = detectPath("fps", FPS_PATHS)
-    
+
     fun getBatteryTempPath(): String? = detectPath("battery_temp", BATTERY_TEMP_PATHS)
 
     /** @return CPU temperature sysfs path or null if not supported */
@@ -319,7 +319,7 @@ object SysfsDetector {
     fun getCpuBasePath(): String? {
         // Check cache first
         detectedPaths["cpu_base"]?.let { return it }
-        
+
         val path = "/sys/devices/system/cpu"
         val file = File(path)
         if (file.exists() && file.isDirectory()) {
@@ -327,7 +327,7 @@ object SysfsDetector {
             Log.d(TAG, "Using CPU base path: $path")
             return path
         }
-        
+
         Log.w(TAG, "CPU base path not found: $path")
         detectedPaths["cpu_base"] = null
         return null
@@ -340,7 +340,7 @@ object SysfsDetector {
         detectedPaths.clear()
         Log.d(TAG, "Sysfs detection cache cleared")
     }
-    
+
     /**
      * Check if a specific hardware component is supported
      * for future usage

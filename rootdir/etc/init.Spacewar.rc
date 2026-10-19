@@ -117,7 +117,7 @@ on post-fs-data
 
     # Nothing camera
     restorecon_recursive /mnt/vendor/persist
-    mkdir /mnt/vendor/persist/camera 0777 cameraserver cameraserver
+    mkdir /mnt/vendor/persist/camera 0770 cameraserver cameraserver
     mkdir /data/vendor/camera 0775 camera camera
     copy /mnt/vendor/persist/camera/bokeh_caldata_uw_persist.bin /data/vendor/camera/bokeh_caldata_uw_persist.bin
     chmod 0444 /data/vendor/camera/bokeh_caldata_uw_persist.bin
@@ -126,10 +126,9 @@ on post-fs-data
     chmod 0444 /data/vendor/camera/ois_caldata_wide_persist.bin
     chown cameraserver audio /data/vendor/camera/ois_caldata_wide_persist.bin
 
-    # Nfc  
-    mkdir /data/vendor 0777 nfc nfc
-    mkdir /data/vendor/nfc 0777 nfc nfc
-    mkdir /data/vendor/nfc/param 0777 nfc nfc
+    # Nfc
+    mkdir /data/vendor/nfc 0700 nfc nfc
+    mkdir /data/vendor/nfc/param 0700 nfc nfc
     chmod 0660 /dev/pn553
     chown nfc nfc /dev/pn553
 
@@ -146,14 +145,5 @@ on property:service.bootanim.exit=1
     chown system system /sys/class/qcom-battery/charge_pump_enable
     chown system system /sys/class/qcom-battery/charge_power
     chown system system /sys/class/qcom-battery/wls_en
-
-on property:service.bootanim.exit=0
-    # Boot led effect placeholder
-   write /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/bootan_leds_effect 1
-
-on property:service.bootanim.exit=1
     # Boot led effect placeholder
     write /sys/devices/platform/soc/984000.i2c/i2c-0/0-0020/leds/aw210xx_led/bootan_leds_effect 0
-
-on property:sys.boot_completed=1
-    swapon_all /vendor/etc/fstab.zram

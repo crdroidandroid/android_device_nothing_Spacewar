@@ -11,14 +11,14 @@ import androidx.annotation.ColorInt;
  * Centralized GameBar color presets for title and value colors
  */
 public class GameBarColorPresets {
-    
+
     // Default colors
     @ColorInt
     public static final int DEFAULT_TITLE_COLOR = 0xFFFFFFFF; // White
-    
+
     @ColorInt
     public static final int DEFAULT_VALUE_COLOR = 0xFF4CAF50; // Green
-    
+
     // GameBar preset colors
     @ColorInt
     public static final int[] GAMEBAR_PRESETS = new int[] {
@@ -31,7 +31,7 @@ public class GameBarColorPresets {
         0xFF8A2BE2, // Electric Violet
         0xFFFF1493  // Magenta
     };
-    
+
     private GameBarColorPresets() {
         // Utility class - no instantiation
     }

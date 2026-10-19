@@ -89,7 +89,7 @@ object GameBarCpuInfo {
     fun getCpuTemp(): String {
         val (path, divider) = GameBarConfig.getCpuTempConfig()
         if (path == null) return "N/A"
-        
+
         val line = readLine(path) ?: return "N/A"
         val cleanLine = line.trim()
         return try {

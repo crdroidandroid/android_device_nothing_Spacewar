@@ -13,7 +13,7 @@ import com.android.gamebar.utils.SysfsDetector
  * All values are loaded from resources to support device-specific overlays.
  */
 object GameBarConfig {
-    
+
     private lateinit var context: Context
 
     // Cache for detected paths
@@ -25,11 +25,11 @@ object GameBarConfig {
     fun init(ctx: Context) {
         context = ctx.applicationContext
     }
-    
+
     // FPS paths
     val fpsSysfsPath: String?
         get() = SysfsDetector.getFpsPath()
-    
+
     // Battery configuration
     val batteryTempPath: String?
         get() = SysfsDetector.getBatteryTempInfo().first
@@ -40,11 +40,11 @@ object GameBarConfig {
         return SysfsDetector.getBatteryTempInfo()
     }
 
-    
+
     // CPU configuration - now dynamic
     val cpuBasePath: String?
         get() = SysfsDetector.getCpuBasePath()
-    
+
     val cpuTempPath: String?
         get() = getCpuTempConfig().first
     val cpuTempDivider: Int
@@ -61,10 +61,10 @@ object GameBarConfig {
 
         val detectorInfo = SysfsDetector.getCpuTempInfo()
         val finalDivider = if (resDivider > 0) resDivider else detectorInfo.second
-        
+
         return Pair(detectorInfo.first, finalDivider)
     }
-    
+
     // GPU configuration
     val gpuUsagePath: String
         get() = context.getString(R.string.config_gpu_usage_path)
@@ -88,10 +88,10 @@ object GameBarConfig {
 
         val detectorInfo = SysfsDetector.getGpuTempInfo()
         val finalDivider = if (resDivider > 0) resDivider else detectorInfo.second
-        
+
         return Pair(detectorInfo.first ?: "/sys/class/kgsl/kgsl-3d0/temp", finalDivider)
     }
-    
+
     // RAM configuration
     val ramFreqPath: String
         get() = context.getString(R.string.config_ram_freq_path)
@@ -111,10 +111,10 @@ object GameBarConfig {
 
         val detectorInfo = SysfsDetector.getRamTempInfo()
         val finalDivider = if (resDivider > 0) resDivider else detectorInfo.second
-        
+
         return Pair(detectorInfo.first ?: "", finalDivider)
     }
-    
+
     // Proc filesystem paths
     val procStatPath: String
         get() = context.getString(R.string.config_proc_stat_path)

@@ -110,25 +110,25 @@
     <string name="preset_saved_presets">Saved Presets</string>
     <string name="preset_no_presets">No presets saved yet</string>
     <string name="preset_no_presets_desc">Save your current configuration to create your first preset</string>
-    
+
     <!-- Preset Dialog Titles -->
     <string name="dialog_title_save_preset">Save Preset</string>
     <string name="dialog_title_rename_preset">Rename Preset</string>
     <string name="dialog_title_delete_preset">Delete Preset</string>
     <string name="dialog_title_preset_options">Preset Options</string>
-    
+
     <!-- Preset Dialog Messages -->
     <string name="dialog_message_preset_name">Enter a name for this preset:</string>
     <string name="dialog_message_delete_preset">Are you sure you want to delete this preset?\n\n%s</string>
     <string name="dialog_message_load_preset">Load this preset? Current settings will be replaced.</string>
     <string name="dialog_message_reset_default">Reset all GameBar settings to factory defaults?\n\nThis will restore all toggles, colors, sizes, and other settings to their original values. This action cannot be undone.</string>
-    
+
     <!-- Preset Actions -->
     <string name="preset_action_load">Load</string>
     <string name="preset_action_export">Export</string>
     <string name="preset_action_rename">Rename</string>
     <string name="preset_action_delete">Delete</string>
-    
+
     <!-- Preset Toast Messages -->
     <string name="toast_preset_saved">Preset saved: %s</string>
     <string name="toast_preset_loaded">Preset loaded: %s</string>
@@ -143,11 +143,11 @@
     <string name="toast_preset_import_failed">Failed to import preset</string>
     <string name="toast_preset_name_empty">Preset name cannot be empty</string>
     <string name="toast_preset_reset_success">Settings reset to defaults</string>
-    
+
     <!-- Preset Hints -->
     <string name="hint_preset_name">Preset name</string>
     <string name="preset_created">Created: %s</string>
-    
+
     <!-- Long Press Warning -->
     <string name="warning_longpress_change_title">⚠️ Warning</string>
     <string name="warning_longpress_change_message">Changing the Long Press function will remove quick access to Load Preset.\n\nYou can still access presets through:\n• GameBar Settings → Presets\n• Assign Load Preset to another gesture\n\nDo you want to proceed?</string>

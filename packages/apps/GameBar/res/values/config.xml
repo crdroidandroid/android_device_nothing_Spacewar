@@ -11,7 +11,7 @@
          - Set path to "dynamic" to use automatic sysfs detection script.
          - To hardcode a specific node, replace "dynamic" with the absolute path
            (e.g., /sys/class/thermal/thermal_zone15/temp)
-           
+
          HOW TO OVERRIDE DIVIDERS:
          - Set divider to 0 to automatically detect whether temperatures are
            milli/deci/celsius based on output values.
@@ -28,12 +28,12 @@
     <string name="config_gpu_temp_path" translatable="false">dynamic</string>
     <integer name="config_gpu_temp_divider">0</integer>
     <integer name="config_gpu_clock_divider">1000000</integer>
-    
+
     <!-- RAM Configuration -->
     <string name="config_ram_freq_path" translatable="false">/sys/devices/system/cpu/bus_dcvs/DDR/cur_freq</string>
     <string name="config_ram_temp_path" translatable="false">dynamic</string>
     <integer name="config_ram_temp_divider">0</integer>
-    
+
     <!-- Proc filesystem paths -->
     <string name="config_proc_stat_path" translatable="false">/proc/stat</string>
     <string name="config_proc_meminfo_path" translatable="false">/proc/meminfo</string>

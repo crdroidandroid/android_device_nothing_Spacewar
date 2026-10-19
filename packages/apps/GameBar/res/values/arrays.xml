@@ -23,7 +23,7 @@
         <item>basic</item>
         <item>advanced</item>
     </string-array>
-    
+
     <!-- Update Interval -->
     <string-array name="fps_overlay_update_interval_entries">
         <item>Every 500ms</item>

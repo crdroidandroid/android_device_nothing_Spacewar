@@ -29,7 +29,7 @@ import java.util.Locale
 import com.android.settingslib.widget.SettingsBasePreferenceFragment
 
 class GameBarPerAppConfigFragment : SettingsBasePreferenceFragment() {
-    
+
     companion object {
         const val PREF_AUTO_APPS = "game_bar_auto_apps"
     }
@@ -55,14 +55,14 @@ class GameBarPerAppConfigFragment : SettingsBasePreferenceFragment() {
             setHintTextColor(context.getColor(R.color.app_package_text_selector))
         }
         val params = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, 
+            ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
         val margin = (context.resources.displayMetrics.density * 16).toInt() // 16dp
         params.setMargins(margin, 0, margin, 0)
         layout.addView(searchBar, params)
         root?.let { layout.addView(it) }
-        
+
         searchBar?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -94,7 +94,7 @@ class GameBarPerAppConfigFragment : SettingsBasePreferenceFragment() {
             val label = app.loadLabel(pm!!).toString().lowercase()
             val pkg = app.packageName.lowercase()
             if (filter.isNotEmpty() && !(label.contains(filter) || pkg.contains(filter))) return@forEach
-            
+
             val pref = SwitchPreferenceCompat(requireContext()).apply {
                 title = app.loadLabel(pm!!)
                 summary = app.packageName
