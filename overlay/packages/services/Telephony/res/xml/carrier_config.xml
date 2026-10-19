@@ -8,6 +8,7 @@
         <boolean name="hide_lte_plus_data_icon_bool" value="false"/>
         <boolean name="carrier_volte_available_bool" value="true"/>
         <boolean name="carrier_volte_enabled_bool" value="true"/>
+        <boolean name="config_update_service_status" value="true" />
         <int name="nr_advanced_threshold_bandwidth_khz_int" value="0"/>
         <int name="lte_plus_threshold_bandwidth_khz_int" value="0"/>
     </carrier_config>
