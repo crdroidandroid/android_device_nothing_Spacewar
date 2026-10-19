@@ -60,7 +60,7 @@
     <int name="default_rtt_mode_int"
          value="0" />
     <boolean name="config_update_service_status"
-             value="false" />
+             value="true" />
     <boolean name="config_update_volte_icon"
              value="false" />
     <boolean name="auto_retry_failed_wifi_emergency_call"
@@ -86,6 +86,24 @@
              value="false" />
     <boolean name="carrier_call_progress_notification"
              value="true" />
+    <boolean name="carrier_vowifi_available_bool"
+             value="true" />
+    <boolean name="carrier_vowifi_enabled_bool"
+             value="true" />
+    <boolean name="editable_wfc_mode_bool"
+             value="true" />
+    <boolean name="require_entitlement_checks_bool"
+             value="false" />
+    <boolean name="hide_lte_plus_data_icon_bool"
+             value="false" />
+    <boolean name="carrier_volte_available_bool"
+             value="true" />
+    <boolean name="carrier_volte_enabled_bool"
+             value="true" />
+    <int name="nr_advanced_threshold_bandwidth_khz_int"
+         value="0" />
+    <int name="lte_plus_threshold_bandwidth_khz_int"
+         value="0" />
   </carrier_config>
   <carrier_config mcc="1"
                   mnc="1">
